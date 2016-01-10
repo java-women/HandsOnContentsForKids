@@ -3,7 +3,7 @@ enchant();
 window.onload = function(){
 
     var core = new Core(320, 320);
-    core.preload("avatarBg1.png", "avatarBg2.png", "avatarBg3.png", "monster/bigmonster1.gif");
+    core.preload("avatarBg1.png", "avatarBg2.png", "avatarBg3.png", "monster/bigmonster1.gif", "clear.png");
     core.fps = 15;
     core.rootScene.backgroundColor = "gray";
 
@@ -36,7 +36,8 @@ window.onload = function(){
         var enemy = new AvatarMonster(core.assets["monster/bigmonster1.gif"]);
         enemy.moveTo(210, 80);
         enemy.action = "walk";
-        enemy.life = 10000;
+        var param = getParameter();
+        enemy.life = param["enemy"];
         core.rootScene.addChild(enemy);
 
         /* アバター動作 */
@@ -71,13 +72,21 @@ window.onload = function(){
                 enemy.action = "attack";
                 if (this.intersect(avatar) && avatar.life > 0) {
                     avatar.action = "damage";
-                     avatar.life -= 2;
+                    avatar.life -= 2;
                 }
             }
 
             if (enemy.life <= 0) enemy.action = "dead";
 
-            enemyLifeBar.width = enemy.life * 0.02;
+            enemyLifeBar.width = enemy.life * (200 / param["enemy"]);
+
+            if (enemy.life <= 0) {
+                var clear = new Sprite(270, 48);
+                clear.image = core.assets["clear.png"];
+                clear.x = 25;
+                clear.y = 140;
+                core.rootScene.addChild(clear);
+            }
         });
 
         /* 操作説明 */
@@ -120,3 +129,31 @@ window.onload = function(){
 
     core.start();
 };
+
+/*
+ * URLのパラメータを取得.
+ */
+function getParameter() {
+    var param = location.search;
+    if (!param) return false;
+    param = param.substring(1);
+    var pair = param.split("&");
+    var i=temp="";
+    var key=new Array();
+    for (i=0; i < pair.length; i++) {
+        temp=pair[i].split("=");
+        keyName=temp[0];
+        keyValue=temp[1];
+        key[keyName]=keyValue;
+    }
+
+    /* エネミーのデフォルトHP設定 */
+     if (!key["enemy"] || key["enemy"] == "" || isNaN(unescape(key["enemy"]))){
+        key["enemy"] = 10000;
+    }else{
+        /* コード変換 */
+        name = key["enemy"];
+    }
+
+    return key;
+}
