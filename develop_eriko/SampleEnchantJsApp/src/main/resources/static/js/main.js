@@ -76,11 +76,11 @@ window.onload = function(){
                 }
             }
 
-            if (enemy.life <= 0) enemy.action = "dead";
-
             enemyLifeBar.width = enemy.life * (200 / param["enemy"]);
 
             if (enemy.life <= 0) {
+                enemy.action = "dead";
+                core.stop();
                 var clear = new Sprite(270, 48);
                 clear.image = core.assets["clear.png"];
                 clear.x = 25;
