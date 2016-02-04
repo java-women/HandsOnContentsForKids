@@ -22,6 +22,8 @@ repositories {
 
 dependencies {
     compile 'org.springframework.boot:spring-boot-starter-web'
+    compile 'org.springframework.boot:spring-boot-starter-thymeleaf'
+    compile 'org.springframework.boot:spring-boot-starter-security'
 }
 
 jar.baseName = 'hands-on-contents-for-kids'
