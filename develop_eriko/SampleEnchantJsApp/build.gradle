@@ -1,4 +1,4 @@
-group 'hands-on-contents-for-kids'
+group 'javajo'
 version '1.0-0-SNAPSHOT'
 
 buildscript {
