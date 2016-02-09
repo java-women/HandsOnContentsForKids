@@ -17,7 +17,103 @@ Spring Boot | 1.3.1.RELEASE
 
     gradlew bootRun
 
-## 3．遊び方
+## 3. プロジェクト構成
+
+src
+└─main
+    ├─java
+    │  └─javajo
+    │      │  Main.java
+    │      │
+    │      └─controller
+    │              GameController.java
+    │
+    └─resources
+        │  application.properties
+        │
+        ├─resources
+        │  │  apad.png
+        │  │  avatarBg1.png
+        │  │  avatarBg2.png
+        │  │  avatarBg3.png
+        │  │  bar.png
+        │  │  chara0.png
+        │  │  chara1.png
+        │  │  chara2.png
+        │  │  chara3.png
+        │  │  chara4.png
+        │  │  chara5.png
+        │  │  chara6.png
+        │  │  chara7.png
+        │  │  clear.png
+        │  │  droid.dae
+        │  │  effect0.png
+        │  │  enchant-sphere.png
+        │  │  enchant.png
+        │  │  end.png
+        │  │  favicon.ico
+        │  │  font0.png
+        │  │  font1.png
+        │  │  font2.png
+        │  │  gameover.png
+        │  │  icon0.png
+        │  │  icon1.png
+        │  │  indicator.png
+        │  │  javajo.png
+        │  │  map0.png
+        │  │  map1.png
+        │  │  map2.png
+        │  │  pad.png
+        │  │  space0.png
+        │  │  space1.png
+        │  │  space2.png
+        │  │  space3.png
+        │  │  start.png
+        │  │
+        │  └─monster
+        │          bigmonster1.gif
+        │          bigmonster2.gif
+        │          monster1.gif
+        │          monster2.gif
+        │          monster3.gif
+        │          monster4.gif
+        │          monster5.gif
+        │          monster6.gif
+        │          monster7.gif
+        │
+        ├─static
+        │  │  index.html
+        │  │
+        │  ├─build
+        │  │  │  enchant.js
+        │  │  │
+        │  │  └─plugins
+        │  │          avatar.enchant.js
+        │  │          box2d.enchant.js
+        │  │          collada.gl.enchant.js
+        │  │          extendMap.enchant.js
+        │  │          gl.enchant.js
+        │  │          memory.enchant.js
+        │  │          mixing.enchant.js
+        │  │          mmd.gl.enchant.js
+        │  │          nineleap.enchant.js
+        │  │          physics.gl.enchant.js
+        │  │          primitive.gl.enchant.js
+        │  │          socket.enchant.js
+        │  │          tl.enchant.js
+        │  │          twitter.enchant.js
+        │  │          ui.enchant.js
+        │  │          util.enchant.js
+        │  │          widget.enchant.js
+        │  │          wiiu.enchant.js
+        │  │
+        │  └─js
+        │          stage001.js
+        │
+        └─templates
+                stage001.html
+            
+## 4．遊び方
 
 1．以下のURLにアクセス
 
