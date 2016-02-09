@@ -26,4 +26,4 @@ dependencies {
     compile 'org.springframework.boot:spring-boot-starter-security'
 }
 
-jar.baseName = 'hands-on-contents-for-kids'
+jar.baseName = 'javajo-teaching-for-kids'
