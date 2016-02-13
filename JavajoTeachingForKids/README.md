@@ -97,7 +97,7 @@ src/main/resources/templates/stage001.html
 ```
 
 3．ゲームコンテンツJSを作成する
-連プレートHTMLに指定したJS名で作成
+テンプレートHTMLに指定したJS名で作成
 例）
 src/main/resources/satic/js/stage001.js
 ```
