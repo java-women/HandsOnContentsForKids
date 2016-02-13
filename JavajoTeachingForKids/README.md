@@ -60,7 +60,7 @@ src
 1．Controllerを作成する
 例）
 src/main/java/javajo/controller/GameController.java
-```
+```java
 @Controller
 public class GameController {
     @RequestMapping(value = "/stage001", method = RequestMethod.GET)
@@ -74,7 +74,7 @@ public class GameController {
 Controllerで指定したテンプレートHTML名で作成
 例）
 src/main/resources/templates/stage001.html
-```
+```html
 <!DOCTYPE html>
 <html>
 <head>
@@ -100,7 +100,7 @@ src/main/resources/templates/stage001.html
 テンプレートHTMLに指定したJS名で作成
 例）
 src/main/resources/satic/js/stage001.js
-```
+```javascript
 enchant();
 
 window.onload = function(){
@@ -114,7 +114,7 @@ window.onload = function(){
 4．トップ画面にゲームコンテンツのリンクを追加する
 例）
 src/main/resources/satic/top.html
-```
+```html
 <!DOCTYPE html>
 <html>
 <head>
