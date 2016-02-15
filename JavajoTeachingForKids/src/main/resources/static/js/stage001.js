@@ -134,12 +134,14 @@ window.onload = function(){
  * URLのパラメータを取得.
  */
 function getParameter() {
+    var key=new Array();
+    key["enemy"] = 10000;
+
     var param = location.search;
-    if (!param) return false;
+    if (!param) return key;
     param = param.substring(1);
     var pair = param.split("&");
     var i=temp="";
-    var key=new Array();
     for (i=0; i < pair.length; i++) {
         temp=pair[i].split("=");
         keyName=temp[0];

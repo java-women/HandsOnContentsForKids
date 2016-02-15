@@ -1,4 +1,4 @@
-group 'hands-on-contents-for-kids'
+group 'javajo'
 version '1.0-0-SNAPSHOT'
 
 buildscript {
@@ -22,6 +22,8 @@ repositories {
 
 dependencies {
     compile 'org.springframework.boot:spring-boot-starter-web'
+    compile 'org.springframework.boot:spring-boot-starter-thymeleaf'
+    compile 'org.springframework.boot:spring-boot-starter-security'
 }
 
-jar.baseName = 'hands-on-contents-for-kids'
+jar.baseName = 'javajo-teaching-for-kids'
