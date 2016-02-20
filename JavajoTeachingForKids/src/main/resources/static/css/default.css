@@ -11,3 +11,8 @@ iframe {
     height: 100%;
     min-height: 600px;
 }
+
+div#editor {
+    width: calc(100% - 650px);
+    margin-left: 620px;
+}
