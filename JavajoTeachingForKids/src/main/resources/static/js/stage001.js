@@ -24,11 +24,26 @@ window.onload = function() {
  * パラメータ編集
  */
 function editData(){
-    inputYourLife = document.getElementById("your-life").value;
-    inputYourAttack = document.getElementById("your-attack").value;
-    inputEnemyLife = document.getElementById("enemy-life").value;
-    inputEnemyAttack = document.getElementById("enemy-attack").value;
-    core.replaceScene(createStartScene());
+    try {
+        inputYourLife = getIntValue("your-life");
+        inputYourAttack = getIntValue("your-attack");
+        inputEnemyLife = getIntValue("enemy-life");
+        inputEnemyAttack = getIntValue("enemy-attack");
+        core.replaceScene(createStartScene());
+    } catch(e) {
+        alert("うまく動かなかった。\r\nやり直してね。");
+    }
+}
+
+/**
+ * int型の値を取得
+ */
+function getIntValue(id) {
+    var value = document.getElementById(id).value;
+    if (!isFinite(value)) {
+        throw "Invalid data";
+    }
+    return parseInt(value);
 }
 
 /**
