@@ -1,6 +1,6 @@
 enchant();
 
-var core;
+/* 初期値 */
 var inputYourLife = 10;
 var inputYourAttack = 1;
 var inputEnemyLife = 10000;
@@ -25,53 +25,15 @@ window.onload = function() {
  */
 function editData(){
     try {
-        inputYourLife = getIntValue("your-life");
-        inputYourAttack = getIntValue("your-attack");
-        inputEnemyLife = getIntValue("enemy-life");
-        inputEnemyAttack = getIntValue("enemy-attack");
+        inputYourLife = getIntValue("your-life", 1);
+        inputYourAttack = getIntValue("your-attack", 1);
+        inputEnemyLife = getIntValue("enemy-life", 1);
+        inputEnemyAttack = getIntValue("enemy-attack", 1);
         core.replaceScene(createStartScene());
     } catch(e) {
         alert("うまく動かなかった。\r\nやり直してね。");
     }
 }
-
-/**
- * int型の値を取得
- */
-function getIntValue(id) {
-    var value = document.getElementById(id).value;
-    if (!isFinite(value)) {
-        throw "Invalid data";
-    }
-    return parseInt(value);
-}
-
-/**
- * タイトルシーン
- */
-function createStartScene() {
-    var scene = new Scene();
-    scene.backgroundColor = '#3cb371';
-    var startImage = new Sprite(236, 48);
-    startImage.image = core.assets['start.png'];
-    startImage.x = 42;
-    startImage.y = 136;
-    scene.addChild(startImage);
-
-    var title = new Label('敵を倒そう！');
-    title.textAlign = 'center';
-    title.color = '#ffffff';
-    title.x = 20;
-    title.y = 96;
-    title.font = '28px sans-serif';
-    scene.addChild(title);
-
-    startImage.addEventListener(Event.TOUCH_START, function(e) {
-        core.replaceScene(createGameScene());
-    });
-
-    return scene;
-};
 
 /**
  * ゲームシーン
@@ -197,52 +159,6 @@ function createGameScene() {
     enemyLifeBar.x = 110;
     enemyLifeBar.y = 200;
     scene.addChild(enemyLifeBar);
-
-    return scene;
-};
-
-/**
- * ゲームクリアシーン
- */
-function createGameclearScene() {
-    var scene = new Scene();
-    scene.backgroundColor = '#303030';
-
-    var gameclearImage = new Sprite(189, 97);
-    gameclearImage.image = core.assets['clear.png'];
-    gameclearImage.x = 65;
-    gameclearImage.y = 112;
-    scene.addChild(gameclearImage);
-
-    var retryButton = new Button("もう一度遊ぶ", "light");
-    retryButton.moveTo(110,230);
-    scene.addChild(retryButton);
-    retryButton.ontouchstart = function(){
-        core.replaceScene(createStartScene());
-    }
-
-    return scene;
-};
-
-/**
- * ゲームオーバーシーン
- */
-function createGameoverScene() {
-    var scene = new Scene();
-    scene.backgroundColor = '#303030';
-
-    var gameoverImage = new Sprite(189, 97);
-    gameoverImage.image = core.assets['gameover.png'];
-    gameoverImage.x = 65;
-    gameoverImage.y = 112;
-    scene.addChild(gameoverImage);
-
-    var retryButton = new Button("もう一度遊ぶ", "light");
-    retryButton.moveTo(110,230);
-    scene.addChild(retryButton);
-    retryButton.ontouchstart = function(){
-        core.replaceScene(createStartScene());
-    }
 
     return scene;
 };
