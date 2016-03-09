@@ -12,6 +12,7 @@ buildscript {
 
 apply plugin: 'java'
 apply plugin: 'spring-boot'
+apply plugin: 'idea'
 
 sourceCompatibility = '1.8'
 targetCompatibility = '1.8'
@@ -24,6 +25,18 @@ dependencies {
     compile 'org.springframework.boot:spring-boot-starter-web'
     compile 'org.springframework.boot:spring-boot-starter-thymeleaf'
     compile 'org.springframework.boot:spring-boot-starter-security'
+    compile 'org.springframework.boot:spring-boot-devtools'
 }
 
 jar.baseName = 'javajo-teaching-for-kids'
+
+task native2ascii {
+    inputs.files files("src/main/resources/")
+    doLast {
+        ant.native2ascii (
+                src: "${projectDir}/src/main/resources",
+                dest: "${buildDir}/resources/main",
+                reverse: "true"
+        )
+    }
+}
