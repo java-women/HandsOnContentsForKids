@@ -4,7 +4,9 @@ window.onload = function() {
     var core = new Core(320, 320);
     core.preload('chara1.png');
     core.fps = 10;
-    core.rootScene.backgroundColor = "MediumSeaGreen";
+
+    var defaultColor = document.getElementsByClassName('color-picker')[0].value;
+    core.rootScene.backgroundColor = "#" + defaultColor;
 
     core.onload = function() {
         var bear = new Sprite(32, 32);
