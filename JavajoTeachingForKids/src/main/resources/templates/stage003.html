@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>Stage003</title>
+    <script type="text/javascript" src="enchant.js"></script>
+    <script type="text/javascript" src="js/stage003.js"></script>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous" />
+    <link rel="stylesheet" href="css/default.css" />
+</head>
+<body class="container">
+<div id="editor">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="panel panel-success">
+                <div class="panel-heading">
+                    <h2 class="panel-title">game003.js</h2>
+                </div>
+                <form class="panel-body">
+                        <pre>
+enchant();
+
+window.onload = function() {
+    var core = new Core(320, 320);
+    core.preload('chara1.png');
+    core.fps = 10;
+    core.backgroundColor = "MediumSeaGreen";
+
+    core.onload = function() {
+        var bear = new Sprite(32, 32);
+        bear.image = core.assets['chara1.png'];
+        bear.x = 0;
+        bear.y = 0;
+
+        bear.on('enterframe', function() {
+            // bearMove.auto(this, core);
+            bearMove.manual(this, core);
+        });
+
+        core.rootScene.addChild(bear);
+        bear.frame = [0, 1, 0, 2];
+        // bear.frame = [5, 6, 5, 7];
+        // bear.frame = [10, 11, 10, 12];
+    };
+
+    core.start();
+};
+
+var bearMove = {
+    auto: function(bear, core) {
+        bear.x += 10;
+        if (bear.x > core.width) bear.x = 0;
+    },
+    manual: function(bear, core) {
+        if (core.input.left) bear.x -= 10;
+        if (core.input.right) bear.x += 10;
+        if (core.input.up) bear.y -= 10;
+        if (core.input.down) bear.y += 10;
+    }
+};
+                        </pre>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="http://fb.me/react-0.13.3.js"></script>
+<script src="http://fb.me/JSXTransformer-0.13.3.js"></script>
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<!-- Latest compiled and minified JavaScript -->
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+</body>
+</html>
