@@ -18,3 +18,9 @@
     padding: 0;
     text-align : center;
 }
+
+.select-move {
+    width: 280px;
+    height: 30px;
+    margin: -10px auto;
+}

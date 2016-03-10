@@ -9,8 +9,10 @@
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
     <script type="text/javascript" src="enchant.js"></script>
     <script type="text/javascript" src="plugins/jscolor.min.js"></script>
+
     <script type="text/javascript" src="js/stage003_action.js"></script>
     <script type="text/javascript" src="js/stage003.js"></script>
+
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous" />
     <link rel="stylesheet" href="css/default.css" />
@@ -43,8 +45,13 @@ window.onload = function() {
         bear.y = 0;
 
         bear.on('enterframe', function() {
-            // bearMove.auto(this, core);
-            bearMove.manual(this, core);
+
+            // キャラクターの動きを変更
+            <select class="form-control select-move">
+                <option value="notMove"></option>
+                <option value="auto">bearMove.auto(this, core);</option>
+                <option value="manual">bearMove.manual(this, core);</option>
+            </select>
         });
 
         core.rootScene.addChild(bear);
@@ -57,10 +64,14 @@ window.onload = function() {
 };
 
 var bearMove = {
+
+    // 自動で動く
     auto: function(bear, core) {
         bear.x += 10;
         if (bear.x > core.width) bear.x = 0;
     },
+
+    // 十字キーで動く
     manual: function(bear, core) {
         if (core.input.left) bear.x -= 10;
         if (core.input.right) bear.x += 10;
