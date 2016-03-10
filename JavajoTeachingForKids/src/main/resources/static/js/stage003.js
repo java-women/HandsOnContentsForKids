@@ -2,7 +2,7 @@ enchant();
 
 var i = 1;
 
-function loadStage(selectVal) {
+function loadStage(selectMove, selectBear) {
     var core = new Core(320, 320);
     core.preload('chara1.png');
     core.fps = 8;
@@ -17,19 +17,36 @@ function loadStage(selectVal) {
         bear.y = 0;
 
         bear.on('enterframe', function() {
-            if (selectVal === 'auto') {
-                bearMove.auto(this, core);
-            } else if (selectVal === 'manual') {
-                bearMove.manual(this, core);
+            switch(selectMove) {
+                case 'auto':
+                    bearMove.auto(this, core);
+                    break;
+                case 'manual':
+                    bearMove.manual(this, core);
+                    break;
+                default:
+                    break;
             }
         });
 
         core.rootScene.addChild(bear);
 
-//        bear.frame = 0;
-        bear.frame = [0, 1, 0, 2];
-//        bear.frame = [5, 6, 5, 7];
-//        bear.frame = [10, 11, 10, 12];
+        switch(selectBear) {
+            case 'notWalk':
+                bear.frame = [0];
+                break;
+            case 'bear':
+                bear.frame = [0, 1, 0, 2];
+                break;
+            case 'whiteBear':
+                bear.frame = [5, 6, 5, 7];
+                break;
+            case 'girlBear':
+                bear.frame = [10, 11, 10, 12];
+                break;
+            default:
+                break;
+        }
     };
 
     core.start();

@@ -48,16 +48,21 @@ window.onload = function() {
 
             // キャラクターの動きを変更
             <select class="form-control select-move">
-                <option value="notMove"></option>
+                <option value="notMove">（なし）</option>
                 <option value="auto">bearMove.auto(this, core);</option>
                 <option value="manual">bearMove.manual(this, core);</option>
             </select>
         });
 
         core.rootScene.addChild(bear);
-        bear.frame = [0, 1, 0, 2];
-        // bear.frame = [5, 6, 5, 7];
-        // bear.frame = [10, 11, 10, 12];
+
+            // キャラクターを選択
+            <select class="form-control select-bear">
+                <option value="notWalk">bear.frame = [0];</option>
+                <option value="bear">bear.frame = [0, 1, 0, 2];</option>
+                <option value="whiteBear">bear.frame = [5, 6, 5, 7];</option>
+                <option value="girlBear">bear.frame = [10, 11, 10, 12];</option>
+            </select>
     };
 
     core.start();
