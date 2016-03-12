@@ -24,3 +24,7 @@
     height: 30px;
     margin: -10px auto;
 }
+
+#enchant-stage {
+  pointer-events: none;
+}
