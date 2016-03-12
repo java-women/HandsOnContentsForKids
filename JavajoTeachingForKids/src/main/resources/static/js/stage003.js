@@ -14,7 +14,7 @@ function loadStage(selectMove, selectBear) {
     core.preload('chara1.png');
     core.fps = 8;
 
-    var defaultColor = document.getElementsByClassName('color-picker')[0].value;
+    const defaultColor = document.getElementsByClassName('color-picker')[0].value;
     core.rootScene.backgroundColor = "#" + defaultColor;
 
     // ゲーム本体の描画
