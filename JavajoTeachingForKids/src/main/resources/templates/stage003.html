@@ -24,7 +24,7 @@
             <div class="col-lg-12">
                 <div class="panel panel-primary">
                     <div class="panel-heading">
-                        <h2 class="panel-title">game003.js</h2>
+                        <h2 class="panel-title">stage003.js</h2>
                     </div>
                     <div class="panel-body panel-padding">
                             <pre id="editor-space">
@@ -36,7 +36,7 @@ window.onload = function() {
     core.fps = 10;
 
     // 背景色を変更
-    core.backgroundColor = "#<input type="text" value="3CB371" class="jscolor form-control color-picker" />";
+    core.backgroundColor = "#<input type="text" value="3CB371" class="jscolor form-control" id="color-picker" />";
 
     core.onload = function() {
         var bear = new Sprite(32, 32);
@@ -47,7 +47,7 @@ window.onload = function() {
         bear.on('enterframe', function() {
 
             // キャラクターの動きを変更
-            <select class="form-control select-move">
+            <select class="form-control" id="select-move">
                 <option value="notMove">（なし）</option>
                 <option value="auto">bearMove.auto(this, core);</option>
                 <option value="manual">bearMove.manual(this, core);</option>
@@ -57,7 +57,7 @@ window.onload = function() {
         core.rootScene.addChild(bear);
 
             // キャラクターを選択
-            <select class="form-control select-bear">
+            <select class="form-control" id="select-bear">
                 <option value="notWalk">bear.frame = [0];</option>
                 <option value="bear">bear.frame = [0, 1, 0, 2];</option>
                 <option value="whiteBear">bear.frame = [5, 6, 5, 7];</option>
