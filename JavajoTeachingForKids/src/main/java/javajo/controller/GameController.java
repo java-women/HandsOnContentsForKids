@@ -29,6 +29,15 @@ public class GameController {
     }
 
     /**
+     * Game Stage003.
+     * @return テンプレートHTML
+     */
+    @RequestMapping(value = "/stage003", method = RequestMethod.GET)
+    public String stage003() {
+        return "stage003";
+    }
+
+    /**
      * Game Stage101.
      * @return テンプレートHTML
      */
@@ -47,11 +56,11 @@ public class GameController {
     }
 
     /**
-     * Game Stage003.
+     * Game Stage103.
      * @return テンプレートHTML
      */
-    @RequestMapping(value = "/stage003", method = RequestMethod.GET)
-    public String stage003() {
-        return "stage003";
+    @RequestMapping(value = "/stage103", method = RequestMethod.GET)
+    public String stage103() {
+        return "stage103";
     }
 }
