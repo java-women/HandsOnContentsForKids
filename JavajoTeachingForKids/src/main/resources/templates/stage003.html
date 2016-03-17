@@ -67,23 +67,6 @@ window.onload = function() {
 
     core.start();
 };
-
-var bearMove = {
-
-    // 自動で動く
-    auto: function(bear, core) {
-        bear.x += 10;
-        if (bear.x > core.width) bear.x = 0;
-    },
-
-    // 十字キーで動く
-    manual: function(bear, core) {
-        if (core.input.left) bear.x -= 10;
-        if (core.input.right) bear.x += 10;
-        if (core.input.up) bear.y -= 10;
-        if (core.input.down) bear.y += 10;
-    }
-};
                         </pre>
                     </div>
                 </div>
