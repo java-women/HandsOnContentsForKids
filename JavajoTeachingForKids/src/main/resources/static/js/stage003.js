@@ -82,5 +82,11 @@ var bearMove = {
         if (core.input.right) bear.x += 10/i;
         if (core.input.up) bear.y -= 10/i;
         if (core.input.down) bear.y += 10/i;
+
+        // フレームアウトの処理
+        if (bear.x > core.width - bear.width) bear.x = 0;
+        if (bear.x < 0) bear.x = core.width - bear.width;
+        if (bear.y > core.height - bear.height) bear.y = 0;
+        if (bear.y < 0) bear.y = core.height - bear.height;
     }
 };
