@@ -1,16 +1,14 @@
 enchant();
 
-// chengeイベント呼び出すごとに値が増えてしまう…
-// （故に微調整でつかう）
-var i = 1;
+var core;
 
 /**
  * enchant.jsの描画
  */
-function loadStage(selectMove, selectBear) {
+window.onload = function() {
 
     // 初期設定
-    var core = new Core(320, 320);
+    core = new Core(320, 320);
     core.preload('chara1.png');
     core.fps = 8;
 
@@ -19,50 +17,59 @@ function loadStage(selectMove, selectBear) {
 
     // ゲーム本体の描画
     core.onload = function() {
-        var bear = new Sprite(32, 32);
-        bear.image = core.assets['chara1.png'];
-        bear.x = 0;
-        bear.y = 0;
+        core.replaceScene(createGameScene());
+    };
 
-        // キャラクターのイベント
-        bear.on('enterframe', function() {
+    core.start();
+}
 
-            // 画面からのキャラクターの動き変更
-            switch(selectMove) {
-                case 'auto':
-                    bearMove.auto(this, core);
-                    break;
-                case 'manual':
-                    bearMove.manual(this, core);
-                    break;
-                default:
-                    break;
-            }
-        });
+/**
+ * ゲーム画面
+ */
+var createGameScene = function(selectMove, selectBear) {
+    var scene = new Scene();
+    var bear = new Sprite(32, 32);
+    bear.image = core.assets['chara1.png'];
+    bear.x = 0;
+    bear.y = 0;
 
-        core.rootScene.addChild(bear);
+    // キャラクターのイベント
+    bear.on('enterframe', function() {
 
-        // 画面からのキャラクター変更
-        switch(selectBear) {
-            case 'notWalk':
-                bear.frame = [0];
+        // 画面からのキャラクターの動き変更
+        switch(selectMove) {
+            case 'auto':
+                bearMove.auto(this, core);
                 break;
-            case 'bear':
-                bear.frame = [0, 1, 0, 2];
-                break;
-            case 'whiteBear':
-                bear.frame = [5, 6, 5, 7];
-                break;
-            case 'girlBear':
-                bear.frame = [10, 11, 10, 12];
+            case 'manual':
+                bearMove.manual(this, core);
                 break;
             default:
                 break;
         }
-    };
+    });
 
-    core.start();
-    i++;
+    scene.addChild(bear);
+
+    // 画面からのキャラクター変更
+    switch(selectBear) {
+        case 'notWalk':
+            bear.frame = [0];
+            break;
+        case 'bear':
+            bear.frame = [0, 1, 0, 2];
+            break;
+        case 'whiteBear':
+            bear.frame = [5, 6, 5, 7];
+            break;
+        case 'girlBear':
+            bear.frame = [10, 11, 10, 12];
+            break;
+        default:
+            break;
+    }
+
+    return scene;
 }
 
 /**
@@ -72,16 +79,16 @@ var bearMove = {
 
     // 自動で動く
     auto: function(bear, core) {
-        bear.x += 10/i;
+        bear.x += 10;
         if (bear.x > core.width) bear.x = 0;
     },
 
     // 十字キーで動く
     manual: function(bear, core) {
-        if (core.input.left) bear.x -= 10/i;
-        if (core.input.right) bear.x += 10/i;
-        if (core.input.up) bear.y -= 10/i;
-        if (core.input.down) bear.y += 10/i;
+        if (core.input.left) bear.x -= 10;
+        if (core.input.right) bear.x += 10;
+        if (core.input.up) bear.y -= 10;
+        if (core.input.down) bear.y += 10;
 
         // フレームアウトの処理
         if (bear.x > core.width - bear.width) bear.x = 0;
