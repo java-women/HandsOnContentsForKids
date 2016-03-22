@@ -12,9 +12,5 @@ $(function() {
         var selectBear = $('#select-bear').val();
 
         core.replaceScene(createGameScene(selectMove, selectBear));
-
-        // これないとゲームをリロードさせたときにレイアウトずれる
-        $('#enchant-stage').css('height', '0');
-        $('#enchant-stage > div').css('transform', 'scale(1.875)');
     });
 });
