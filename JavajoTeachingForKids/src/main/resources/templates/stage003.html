@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>Stage003</title>
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="enchant.js"></script>
+    <script type="text/javascript" src="plugins/jscolor.min.js"></script>
+
+    <script type="text/javascript" src="js/stage003_action.js"></script>
+    <script type="text/javascript" src="js/stage003.js"></script>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous" />
+    <link rel="stylesheet" href="css/default.css" />
+    <link rel="stylesheet" href="css/stage003.css" />
+</head>
+<body class="container">
+    <div id="editor">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <h2 class="panel-title">stage003.js</h2>
+                    </div>
+                    <div class="panel-body panel-padding">
+                            <pre id="editor-space">
+enchant();
+
+window.onload = function() {
+    var core = new Core(320, 320);
+    core.preload('chara1.png');
+    core.fps = 10;
+
+    // 背景色を変更
+    core.backgroundColor = "#<input type="text" value="3CB371" class="jscolor form-control" id="color-picker" />";
+
+    core.onload = function() {
+        var bear = new Sprite(32, 32);
+        bear.image = core.assets['chara1.png'];
+        bear.x = 0;
+        bear.y = 0;
+
+        bear.on('enterframe', function() {
+
+            // キャラクターの動きを変更
+            <select class="form-control" id="select-move">
+                <option value="notMove">（なし）</option>
+                <option value="auto">bearMove.auto(this, core);</option>
+                <option value="manual">bearMove.manual(this, core);</option>
+            </select>
+        });
+
+        core.rootScene.addChild(bear);
+
+            // キャラクターを選択
+            <select class="form-control" id="select-bear">
+                <option value="notWalk">bear.frame = [0];</option>
+                <option value="bear">bear.frame = [0, 1, 0, 2];</option>
+                <option value="whiteBear">bear.frame = [5, 6, 5, 7];</option>
+                <option value="girlBear">bear.frame = [10, 11, 10, 12];</option>
+            </select>
+    };
+
+    core.start();
+};
+                        </pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

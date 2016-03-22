@@ -24,6 +24,12 @@ dependencies {
     compile 'org.springframework.boot:spring-boot-starter-web'
     compile 'org.springframework.boot:spring-boot-starter-thymeleaf'
     compile 'org.springframework.boot:spring-boot-starter-security'
+    compile 'org.springframework.boot:spring-boot-starter-websocket'
+    compile 'org.springframework.boot:spring-boot-devtools'
 }
 
 jar.baseName = 'javajo-teaching-for-kids'
+
+bootRun {
+    addResources = true
+}
