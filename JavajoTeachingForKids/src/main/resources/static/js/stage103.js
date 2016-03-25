@@ -2,6 +2,8 @@ enchant();
 
 var core;
 var charaNumber;
+var minChara = 0;
+var maxChara = 15;
 
 const SCREEN_WIDTH = 320;
 const SCREEN_HEIGHT = 320;
@@ -9,7 +11,6 @@ const CHARA_IMG = 'debug.png';
 const MAP_IMG = 'map1.png';
 const MAP_SIZE = 20;
 const MAX_TIME = 5;
-const MAX_CHARA = 15;
 
 /**
  * enchant.jsの描画
@@ -33,7 +34,7 @@ window.onload = function() {
 /**
  * ゲーム画面
  */
-var createGameScene = function() {
+function createGameScene() {
     var scene = new Scene();
 
     // 背景の表示
@@ -75,7 +76,7 @@ var show = {
     // キャラクター
     character: function(scene) {
         // forの数だけ表示
-        for (var m = 0; m < MAX_CHARA; m++) {
+        for (var m = minChara; m < maxChara; m++) {
             var chara = new Chara();
             chara.moveTo(Math.random() * (SCREEN_WIDTH - chara.width), Math.random() * (SCREEN_HEIGHT - chara.height));
             scene.addChild(chara);
@@ -92,6 +93,21 @@ var show = {
         scene.addChild(new Score());
     }
 };
+
+/**
+ * Editボタン押した時
+ */
+function editData() {
+    try {
+        minChara = document.getElementById('start-i').value;
+        maxChara = document.getElementById('end-i').value;
+
+        core.replaceScene(createStartScene());
+
+    } catch(e) {
+        alert("うまく動かなかった。\r\nやり直してね。");
+    }
+}
 
 /**
  * キャラクタークラス
@@ -203,7 +219,7 @@ var Score = Class.create(Label, {
     initialize: function() {
         Label.call(this);
 
-        charaNumber = MAX_CHARA;
+        charaNumber = maxChara - minChara;
         this.moveTo(5, SCREEN_HEIGHT - 20);
         this.color = 'white';
         this.font = "15px 'Consolas', 'Monaco', 'ＭＳ ゴシック'";
