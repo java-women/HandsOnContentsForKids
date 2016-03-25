@@ -46,10 +46,10 @@ var createGameScene = function(selectMove, selectBear) {
         // 画面からのキャラクターの動き変更
         switch(selectMove) {
             case AUTO:
-                bearMove.auto(this, core);
+                bearMove.auto(this);
                 break;
             case MANUAL:
-                bearMove.manual(this, core);
+                bearMove.manual(this);
                 break;
             default:
                 break;
@@ -85,13 +85,13 @@ var createGameScene = function(selectMove, selectBear) {
 var bearMove = {
 
     // 自動で動く
-    auto: function(bear, core) {
+    auto: function(bear) {
         bear.x += 10;
         if (bear.x > core.width) bear.x = 0;
     },
 
     // 十字キーで動く
-    manual: function(bear, core) {
+    manual: function(bear) {
         if (core.input.left) bear.x -= 10;
         if (core.input.right) bear.x += 10;
         if (core.input.up) bear.y -= 10;
