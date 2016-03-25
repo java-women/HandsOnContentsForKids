@@ -16,6 +16,20 @@
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous" />
     <link rel="stylesheet" href="css/default.css" />
+
+    <style>
+        pre {
+            background-color: white;
+            border: 0;
+            border-radius: 0;
+
+            font-size: 150%;
+            line-height: 35px;
+        }
+        input[type="text"] {
+            width: 40px;
+        }
+    </style>
 </head>
 <body class="container">
 <div id="editor">
@@ -26,8 +40,10 @@
                     <h2 class="panel-title">虫を潰そう！</h2>
                 </div>
                 <div class="panel-body panel-padding">
-
-
+                    <pre>
+for (i = <input type="text" value="0" id="start-i" />; i &lt; <input type="text" value="15" id="end-i" />; i++) {
+    虫を生成;
+}</pre>
                 </div>
             </div>
         </div>

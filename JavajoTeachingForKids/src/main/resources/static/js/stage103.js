@@ -9,7 +9,7 @@ const CHARA_IMG = 'debug.png';
 const MAP_IMG = 'map1.png';
 const MAP_SIZE = 20;
 const MAX_TIME = 5;
-const MAX_CHARA = 1;
+const MAX_CHARA = 15;
 
 /**
  * enchant.jsの描画
