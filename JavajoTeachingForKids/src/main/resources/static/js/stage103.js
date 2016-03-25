@@ -84,14 +84,12 @@ var show = {
 
     // タイマー
     timer: function(scene) {
-        var timer = new Timer();
-        scene.addChild(timer);
+        scene.addChild(new Timer());
     },
 
     // スコア
     score: function(scene) {
-        var score = new Score();
-        scene.addChild(score);
+        scene.addChild(new Score());
     }
 };
 
@@ -212,7 +210,7 @@ var Score = Class.create(Label, {
     },
 
     // カウント
-    charaCount: function(val) {
+    charaCount: function() {
         this.text = 'あと ' + charaNumber + ' 匹！';
     },
 
