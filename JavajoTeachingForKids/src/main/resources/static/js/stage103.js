@@ -1,6 +1,8 @@
 enchant();
 
 var core;
+var MAX_CHARA = 5;
+
 const SCREEN_WIDTH = 320;
 const SCREEN_HEIGHT = 320;
 const CHARA_IMG = 'debug.png';
@@ -69,7 +71,7 @@ var show = {
     // キャラクター
     character: function(scene) {
         // forの数だけ表示
-        for (var m = 0; m < 1; m++) {
+        for (var m = 0; m < MAX_CHARA; m++) {
             var chara = new Chara();
             chara.moveTo(Math.random() * (SCREEN_WIDTH - chara.width), Math.random() * (SCREEN_HEIGHT - chara.height));
             scene.addChild(chara);
@@ -161,15 +163,15 @@ var Timer = Class.create(Label, {
 
         core.frame = 0;
         this.moveTo(5, 5);
-        this.color = "white";
+        this.color = 'white';
         this.font = "15px 'Consolas', 'Monaco', 'ＭＳ ゴシック'";
-        this.text = "Timer : ";
+        this.text = 'Timer:';
     },
 
     // カウントダウンしていって、0秒になったらゲームオーバー
-    countdown: function(timerLabel) {
+    countdown: function() {
         var time = MAX_TIME - Math.floor(core.frame/core.fps);
-        this.text = "Timer:" + time;
+        this.text = 'Timer:' + time;
 
         if (time == 0) {
             core.replaceScene(createGameoverScene());
