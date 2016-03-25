@@ -57,7 +57,7 @@ var createGameScene = function() {
 }
 
 /**
- * キャラクターの設定
+ * キャラクタークラス
  */
 var Chara = Class.create(Sprite, {
 
@@ -76,7 +76,7 @@ var Chara = Class.create(Sprite, {
         this.update = this.move;
     },
 
-    //移動
+    // 移動
     move: function() {
     	//向いている方向に移動
     	var radian = (this.rotation - 90) * Math.PI / 180;
@@ -84,16 +84,8 @@ var Chara = Class.create(Sprite, {
         this.y += Math.sin(radian) * this.vy;
     },
 
-    //タッチ
-    ontouchstart: function(){
-        // キャラクターを消す
-        this.parentNode.removeChild(this);
-    },
-
-    //更新処理
-    onenterframe: function(){
-
-        this.update();
+    // 方向転換
+    changeDirection: function() {
 
         //画面からはみ出ないようにする
         var left = 0;
@@ -116,5 +108,17 @@ var Chara = Class.create(Sprite, {
             this.rotation = (this.rotation + 180) * (-1);
             this.y = bottom;
         }
+    },
+
+    // タッチイベント
+    ontouchstart: function(){
+        // キャラクターを消す
+        this.parentNode.removeChild(this);
+    },
+
+    // 更新処理
+    onenterframe: function(){
+        this.update();
+        this.changeDirection();
     }
 });
