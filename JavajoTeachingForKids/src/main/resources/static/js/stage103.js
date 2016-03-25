@@ -13,7 +13,7 @@ window.onload = function() {
     core = new Core(320, 320);
     core.preload('map1.png', 'debug.png');
     core.preload('start.png', 'gameover.png', 'clear.png');
-    core.fps = 20;
+    core.fps = 15;
 
     // ゲーム本体の描画
     core.onload = function() {
@@ -83,6 +83,8 @@ var Chara = Class.create(Sprite, {
 
     //タッチ
     ontouchstart: function(){
+        // キャラクターを消す
+        this.parentNode.removeChild(this);
     },
 
     //更新処理
