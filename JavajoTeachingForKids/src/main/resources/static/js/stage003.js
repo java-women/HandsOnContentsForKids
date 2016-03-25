@@ -1,6 +1,13 @@
 enchant();
 
 var core;
+const CHARA_IMG = 'chara1.png';
+const AUTO = 'auto';
+const MANUAL = 'manual';
+const NOT_WALK = 'notWalk';
+const BEAR = 'bear';
+const WHITE_BEAR = 'whiteBear';
+const GIRL_BEAR = 'girlBear';
 
 /**
  * enchant.jsの描画
@@ -9,7 +16,7 @@ window.onload = function() {
 
     // 初期設定
     core = new Core(320, 320);
-    core.preload('chara1.png');
+    core.preload(CHARA_IMG);
     core.fps = 8;
 
     const defaultColor = document.getElementById('color-picker').value;
@@ -29,7 +36,7 @@ window.onload = function() {
 var createGameScene = function(selectMove, selectBear) {
     var scene = new Scene();
     var bear = new Sprite(32, 32);
-    bear.image = core.assets['chara1.png'];
+    bear.image = core.assets[CHARA_IMG];
     bear.x = 0;
     bear.y = 0;
 
@@ -38,11 +45,11 @@ var createGameScene = function(selectMove, selectBear) {
 
         // 画面からのキャラクターの動き変更
         switch(selectMove) {
-            case 'auto':
-                bearMove.auto(this, core);
+            case AUTO:
+                bearMove.auto(this);
                 break;
-            case 'manual':
-                bearMove.manual(this, core);
+            case MANUAL:
+                bearMove.manual(this);
                 break;
             default:
                 break;
@@ -53,16 +60,16 @@ var createGameScene = function(selectMove, selectBear) {
 
     // 画面からのキャラクター変更
     switch(selectBear) {
-        case 'notWalk':
+        case NOT_WALK:
             bear.frame = [0];
             break;
-        case 'bear':
+        case BEAR:
             bear.frame = [0, 1, 0, 2];
             break;
-        case 'whiteBear':
+        case WHITE_BEAR:
             bear.frame = [5, 6, 5, 7];
             break;
-        case 'girlBear':
+        case GIRL_BEAR:
             bear.frame = [10, 11, 10, 12];
             break;
         default:
@@ -78,13 +85,13 @@ var createGameScene = function(selectMove, selectBear) {
 var bearMove = {
 
     // 自動で動く
-    auto: function(bear, core) {
+    auto: function(bear) {
         bear.x += 10;
         if (bear.x > core.width) bear.x = 0;
     },
 
     // 十字キーで動く
-    manual: function(bear, core) {
+    manual: function(bear) {
         if (core.input.left) bear.x -= 10;
         if (core.input.right) bear.x += 10;
         if (core.input.up) bear.y -= 10;
