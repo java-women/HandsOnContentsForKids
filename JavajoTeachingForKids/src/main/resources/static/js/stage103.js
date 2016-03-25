@@ -1,7 +1,7 @@
 enchant();
 
 var core;
-var MAX_CHARA = 5;
+var charaNumber;
 
 const SCREEN_WIDTH = 320;
 const SCREEN_HEIGHT = 320;
@@ -9,6 +9,7 @@ const CHARA_IMG = 'debug.png';
 const MAP_IMG = 'map1.png';
 const MAP_SIZE = 20;
 const MAX_TIME = 5;
+const MAX_CHARA = 5;
 
 /**
  * enchant.jsの描画
@@ -43,6 +44,9 @@ var createGameScene = function() {
 
     // タイマーの表示
     show.timer(scene);
+
+    // スコアの表示
+    show.score(scene);
 
     return scene;
 }
@@ -82,6 +86,12 @@ var show = {
     timer: function(scene) {
         var timer = new Timer();
         scene.addChild(timer);
+    },
+
+    // スコア
+    score: function(scene) {
+        var score = new Score();
+        scene.addChild(score);
     }
 };
 
@@ -143,6 +153,7 @@ var Chara = Class.create(Sprite, {
     ontouchstart: function(){
         // キャラクターを消す
         this.parentNode.removeChild(this);
+        charaNumber--;
     },
 
     // 更新処理
@@ -181,5 +192,32 @@ var Timer = Class.create(Label, {
     // 更新処理
     onenterframe: function(){
         this.countdown();
+    }
+});
+
+/**
+ * スコアクラス
+ */
+var Score = Class.create(Label, {
+
+    // 初期化
+    initialize: function() {
+        Label.call(this);
+
+        charaNumber = MAX_CHARA;
+        this.moveTo(5, SCREEN_HEIGHT - 20);
+        this.color = 'white';
+        this.font = "15px 'Consolas', 'Monaco', 'ＭＳ ゴシック'";
+        this.text = 'あと ' + charaNumber + ' 匹！';
+    },
+
+    // カウント
+    charaCount: function(val) {
+        this.text = 'あと ' + charaNumber + ' 匹！';
+    },
+
+    // 更新処理
+    onenterframe: function(){
+        this.charaCount();
     }
 });
