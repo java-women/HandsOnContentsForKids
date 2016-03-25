@@ -6,6 +6,7 @@ const SCREEN_HEIGHT = 320;
 const CHARA_IMG = 'debug.png';
 const MAP_IMG = 'map1.png';
 const MAP_SIZE = 20;
+const MAX_TIME = 5;
 
 /**
  * enchant.jsの描画
@@ -52,6 +53,10 @@ var createGameScene = function() {
         chara.moveTo(Math.random() * (SCREEN_WIDTH - chara.width), Math.random() * (SCREEN_HEIGHT - chara.height));
         scene.addChild(chara);
     }
+
+    // タイマーを表示
+    var timer = new Timer();
+    scene.addChild(timer);
 
     return scene;
 }
@@ -120,5 +125,37 @@ var Chara = Class.create(Sprite, {
     onenterframe: function(){
         this.update();
         this.changeDirection();
+    }
+});
+
+/**
+ * タイマークラス
+ */
+var Timer = Class.create(Label, {
+
+    // 初期化
+    initialize: function() {
+        Label.call(this);
+
+        core.frame = 0;
+        this.moveTo(5, 5);
+        this.color = "white";
+        this.font = "15px 'Consolas', 'Monaco', 'ＭＳ ゴシック'";
+        this.text = "Timer : ";
+    },
+
+    // カウントダウンしていって、0秒になったらゲームオーバー
+    countdown: function(timerLabel) {
+        var time = MAX_TIME - Math.floor(core.frame/core.fps);
+        this.text = "Timer:" + time;
+
+        if (time == 0) {
+            core.replaceScene(createGameoverScene());
+        }
+    },
+
+    // 更新処理
+    onenterframe: function(){
+        this.countdown();
     }
 });
