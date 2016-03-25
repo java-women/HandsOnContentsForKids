@@ -33,33 +33,55 @@ window.onload = function() {
 var createGameScene = function() {
     var scene = new Scene();
 
-    // 背景
-    var map = new Map(16, 16);
-    map.image = core.assets[MAP_IMG];
+    // 背景の表示
+    show.background(scene);
 
-    var baseMap = [];
-    for (var i = 0; i < MAP_SIZE; i++) {
-        baseMap[i] = [];
-        for (var n = 0; n < MAP_SIZE; n++) {
-            baseMap[i][n] = 100;
-        }
-    }
-    map.loadData(baseMap);
-    scene.addChild(map);
+    // キャラクターの表示
+    show.character(scene);
 
-    // キャラクターをforの数だけ表示
-    for (var m = 0; m < 1; m++) {
-        var chara = new Chara();
-        chara.moveTo(Math.random() * (SCREEN_WIDTH - chara.width), Math.random() * (SCREEN_HEIGHT - chara.height));
-        scene.addChild(chara);
-    }
-
-    // タイマーを表示
-    var timer = new Timer();
-    scene.addChild(timer);
+    // タイマーの表示
+    show.timer(scene);
 
     return scene;
 }
+
+/**
+ * 表示
+ */
+var show = {
+
+    // 背景
+    background: function(scene) {
+        var map = new Map(16, 16);
+        map.image = core.assets[MAP_IMG];
+
+        var baseMap = [];
+        for (var i = 0; i < MAP_SIZE; i++) {
+            baseMap[i] = [];
+            for (var n = 0; n < MAP_SIZE; n++) {
+                baseMap[i][n] = 100;
+            }
+        }
+        map.loadData(baseMap);
+        scene.addChild(map);
+    },
+
+    // キャラクター
+    character: function(scene) {
+        // forの数だけ表示
+        for (var m = 0; m < 1; m++) {
+            var chara = new Chara();
+            chara.moveTo(Math.random() * (SCREEN_WIDTH - chara.width), Math.random() * (SCREEN_HEIGHT - chara.height));
+            scene.addChild(chara);
+        }
+    },
+
+    // タイマー
+    timer: function(scene) {
+        var timer = new Timer();
+        scene.addChild(timer);
+    }
+};
 
 /**
  * キャラクタークラス
