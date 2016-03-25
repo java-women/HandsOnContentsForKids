@@ -9,7 +9,7 @@ const CHARA_IMG = 'debug.png';
 const MAP_IMG = 'map1.png';
 const MAP_SIZE = 20;
 const MAX_TIME = 5;
-const MAX_CHARA = 5;
+const MAX_CHARA = 1;
 
 /**
  * enchant.jsの描画
@@ -177,11 +177,12 @@ var Timer = Class.create(Label, {
         this.text = 'Timer:';
     },
 
-    // カウントダウンしていって、0秒になったらゲームオーバー
+    // カウントダウン
     countdown: function() {
         var time = MAX_TIME - Math.floor(core.frame/core.fps);
         this.text = 'Timer:' + time;
 
+        // ゲームオーバー
         if (time == 0) {
             core.replaceScene(createGameoverScene());
         }
@@ -212,6 +213,11 @@ var Score = Class.create(Label, {
     // カウント
     charaCount: function() {
         this.text = 'あと ' + charaNumber + ' 匹！';
+
+        // ゲームクリア
+        if (charaNumber == 0) {
+            core.replaceScene(createGameclearScene());
+        }
     },
 
     // 更新処理
