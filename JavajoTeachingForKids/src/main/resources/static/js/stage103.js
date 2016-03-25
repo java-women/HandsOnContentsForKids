@@ -3,6 +3,9 @@ enchant();
 var core;
 const SCREEN_WIDTH = 320;
 const SCREEN_HEIGHT = 320;
+const CHARA_IMG = 'debug.png';
+const MAP_IMG = 'map1.png';
+const MAP_SIZE = 20;
 
 /**
  * enchant.jsの描画
@@ -11,7 +14,7 @@ window.onload = function() {
 
     // 初期設定
     core = new Core(320, 320);
-    core.preload('map1.png', 'debug.png');
+    core.preload(MAP_IMG, CHARA_IMG);
     core.preload('start.png', 'gameover.png', 'clear.png');
     core.fps = 15;
 
@@ -31,12 +34,12 @@ var createGameScene = function() {
 
     // 背景
     var map = new Map(16, 16);
-    map.image = core.assets['map1.png'];
+    map.image = core.assets[MAP_IMG];
 
     var baseMap = [];
-    for (var i = 0; i < 20; i++) {
+    for (var i = 0; i < MAP_SIZE; i++) {
         baseMap[i] = [];
-        for (var n = 0; n < 20; n++) {
+        for (var n = 0; n < MAP_SIZE; n++) {
             baseMap[i][n] = 100;
         }
     }
@@ -46,7 +49,7 @@ var createGameScene = function() {
     // キャラクターをforの数だけ表示
     for (var m = 0; m < 1; m++) {
         var chara = new Chara();
-        chara.moveTo(Math.random() * (SCREEN_WIDTH - 32), Math.random() * (SCREEN_HEIGHT - 32));
+        chara.moveTo(Math.random() * (SCREEN_WIDTH - chara.width), Math.random() * (SCREEN_HEIGHT - chara.height));
         scene.addChild(chara);
     }
 
@@ -61,7 +64,7 @@ var Chara = Class.create(Sprite, {
     // 初期化
     initialize: function() {
         Sprite.call(this, 24, 24);
-        this.image = core.assets['debug.png'];
+        this.image = core.assets[CHARA_IMG];
 
         // キャラクターの向きを設定
     	var angle = Math.random() * 360;
