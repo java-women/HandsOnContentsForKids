@@ -11,4 +11,10 @@ $(function() {
     $('#modal-close').click(function() {
         $('#modal-content, #modal-overlay').fadeOut();
     });
+
+    //「実行」ボタンが押されたとき
+    $('#run').click(function() {
+        var jsText = $('#text-editor').val();
+        eval(jsText);
+    });
 });
