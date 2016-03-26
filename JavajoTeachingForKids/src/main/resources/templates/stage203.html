@@ -10,10 +10,12 @@
     <script type="text/javascript" src="enchant.js"></script>
     <script type="text/javascript" src="js/stage-common.js"></script>
     <script type="text/javascript" src="js/stage203.js"></script>
+    <script type="text/javascript" src="js/stage203_action.js"></script>
 
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous" />
     <link rel="stylesheet" href="css/default.css" />
+    <link rel="stylesheet" href="css/stage203.css" />
 </head>
 <body class="container">
     <div id="editor">
@@ -24,8 +26,18 @@
                         <h2 class="panel-title">stage203.js</h2>
                     </div>
                     <div class="panel-body panel-padding">
-
+                        <div class="input-group">
+                            <button id="modal-open" class="btn btn-lg btn-primary">Editorを開く</button>
+                        </div>
                     </div>
+                    <div id="modal-content">
+                        <textarea id="text-editor"></textarea>
+                        <div id="button-style">
+                            <button type="button" id="modal-close" class="btn btn-info">閉じる</button>
+                            <button type="button" class="btn btn-primary">実行</button>
+                        </div>
+                    </div>
+                    <div id="modal-overlay"></div>
                 </div>
             </div>
         </div>
