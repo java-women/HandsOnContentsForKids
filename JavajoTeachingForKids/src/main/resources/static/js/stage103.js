@@ -7,6 +7,10 @@ var maxChara = 15;
 
 const SCREEN_WIDTH = 320;
 const SCREEN_HEIGHT = 320;
+const MAP_WIDTH = 16;
+const MAP_HEIGHT = 16;
+const CHARA_WIDTH = 24;
+const CHARA_HEIGHT = 24;
 const CHARA_IMG = 'debug.png';
 const MAP_IMG = 'map1.png';
 const MAP_SIZE = 20;
@@ -18,7 +22,7 @@ const MAX_TIME = 5;
 window.onload = function() {
 
     // 初期設定
-    core = new Core(320, 320);
+    core = new Core(SCREEN_WIDTH, SCREEN_HEIGHT);
     core.preload(MAP_IMG, CHARA_IMG);
     core.preload('start.png', 'gameover.png', 'clear.png');
     core.fps = 15;
@@ -59,7 +63,7 @@ var show = {
 
     // 背景
     background: function(scene) {
-        var map = new Map(16, 16);
+        var map = new Map(MAP_WIDTH, MAP_HEIGHT);
         map.image = core.assets[MAP_IMG];
 
         var baseMap = [];
@@ -116,7 +120,7 @@ var Chara = Class.create(Sprite, {
 
     // 初期化
     initialize: function() {
-        Sprite.call(this, 24, 24);
+        Sprite.call(this, CHARA_WIDTH, CHARA_HEIGHT);
         this.image = core.assets[CHARA_IMG];
 
         // キャラクターの向きを設定
