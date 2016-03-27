@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>Stage201</title>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+    <script type="text/javascript" src="enchant.js"></script>
+    <script type="text/javascript" src="plugins/ui.enchant.js"></script>
+    <script type="text/javascript" src="js/stage-common.js"></script>
+    <script type="text/javascript" src="js/stage201.js"></script>
+    <script type="text/javascript" src="js/stage201_action.js"></script>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous" />
+    <link rel="stylesheet" href="css/default.css" />
+    <link rel="stylesheet" href="css/stage201.css" />
+</head>
+<body class="container">
+    <div id="enchant-stage"></div>
+    <div id="editor">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="panel panel-success">
+                    <div class="panel-heading">
+                        <h2 class="panel-title">マップを作ろう！</h2>
+                    </div>
+                    <div class="panel-body">
+                        <div class="col-sm-12">
+                            <div class="col-sm-3 text-right">
+                                枠線の表示：
+                            </div>
+                            <div class="col-sm-9">
+                                <input type="checkbox" id="gridCheckBox" checked="checked" />
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="col-sm-3 text-right">
+                                マップ：
+                            </div>
+                            <div class="col-sm-9">
+                                <div class="input-group input-group-lg">
+                                    <div class="dropdown">
+                                        <button class="btn btn-default dropdown-toggle" type="button" id="mapDropdownMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                            <div id="mapSelected">選んでください</div>
+                                            <span class="caret"></span>
+                                        </button>
+                                        <input type="hidden" name="dropdown-value" value="" />
+                                        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1" id="map-dropdown-menu">
+                                            <li><a href="#"><img src="images/map0/map0-0.png" data-id="0" />草原</a></li>
+                                            <li><a href="#"><img src="images/map0/map0-1.png" data-id="1" />水</a></li>
+                                            <li><a href="#"><img src="images/map0/map0-2.png" data-id="2" />地面</a></li>
+                                            <li><a href="#"><img src="images/map0/map0-3.png" data-id="3" /></a></li>
+                                            <li><a href="#"><img src="images/map0/map0-4.png" data-id="4" />石壁</a></li>
+                                            <li><a href="#"><img src="images/map0/map0-5.png" data-id="5" />石床</a></li>
+                                            <li><a href="#"><img src="images/map0/map0-6.png" data-id="6" /></a></li>
+                                            <li><a href="#"><img src="images/map0/map0-7.png" data-id="7" /></a></li>
+                                            <li><a href="#"><img src="images/map0/map0-8.png" data-id="8" /></a></li>
+                                            <li><a href="#"><img src="images/map0/map0-9.png" data-id="9" /></a></li>
+                                            <li><a href="#"><img src="images/map0/map0-10.png" data-id="10" /></a></li>
+                                            <li><a href="#"><img src="images/map0/map0-11.png" data-id="11" /></a></li>
+                                            <li><a href="#"><img src="images/map0/map0-12.png" data-id="12" /></a></li>
+                                            <li><a href="#"><img src="images/map0/map0-13.png" data-id="13" />上り階段</a></li>
+                                            <li><a href="#"><img src="images/map0/map0-14.png" data-id="14" />下り階段</a></li>
+                                            <li><a href="#"><img src="images/map0/map0-15.png" data-id="15" /></a></li>
+                                            <li><a href="#"><img src="images/map0/map0-16.png" data-id="16" /></a></li>
+                                            <li><a href="#"><img src="images/map0/map0-17.png" data-id="17" /></a></li>
+                                            <li><a href="#"><img src="images/map0/map0-18.png" data-id="18" /></a></li>
+                                            <li><a href="#"><img src="images/map0/map0-19.png" data-id="19" /></a></li>
+                                            <li><a href="#"><img src="images/map0/map0-20.png" data-id="20" /></a></li>
+                                            <li><a href="#"><img src="images/map0/map0-21.png" data-id="21" /></a></li>
+                                            <li><a href="#"><img src="images/map0/map0-22.png" data-id="22" /></a></li>
+                                            <li><a href="#"><img src="images/map0/map0-23.png" data-id="23" />木</a></li>
+                                            <li><a href="#"><img src="images/map0/map0-24.png" data-id="24" />看板</a></li>
+                                            <li><a href="#"><img src="images/map0/map0-25.png" data-id="25" />宝箱</a></li>
+                                            <li><a href="#"><img src="images/map0/map0-26.png" data-id="26" />つぼ</a></li>
+                                            <li><a href="#"><img src="images/map0/map0-27.png" data-id="27" />岩</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <button class="btn  btn-lg btn-primary" id="view" data-toggle="modal" data-target=".bs-example-modal-lg">マップデータ確認</button>
+                            <button class="btn btn-lg btn-primary" id="save">保存</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade bs-example-modal-lg" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    マップデータ
+                </div>
+                <div class="modal-body" id="mapDataView">
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

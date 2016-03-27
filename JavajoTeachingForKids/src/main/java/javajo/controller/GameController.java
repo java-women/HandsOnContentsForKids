@@ -1,14 +1,22 @@
 package javajo.controller;
 
+import javajo.entity.MapEntity;
+import javajo.service.GameService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
  * Created by Eriko on 2016/02/04.
  */
 @Controller
 public class GameController {
+
+    /** GameServiceをDI. */
+    @Autowired
+    private GameService mGameService;
 
     /**
      * Game Stage001.
@@ -44,6 +52,25 @@ public class GameController {
     @RequestMapping(value = "/stage101", method = RequestMethod.GET)
     public String stage101() {
         return "stage101";
+    }
+
+    /**
+     * Game Stage201.
+     * @return テンプレートHTML
+     */
+    @RequestMapping(value = "/stage201", method = RequestMethod.GET)
+    public String stage201() {
+        return "stage201";
+    }
+
+    /**
+     * Game Stage201(マップ保存).
+     * @param mapEntity MapEntity
+     */
+    @ResponseBody
+    @RequestMapping(value = "/stage201/save", method = RequestMethod.POST)
+    public void stage201Save(final MapEntity mapEntity) {
+        this.mGameService.saveMap(mapEntity);
     }
 
     /**
