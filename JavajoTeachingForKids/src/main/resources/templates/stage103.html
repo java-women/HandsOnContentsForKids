@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>Stage103</title>
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="enchant.js"></script>
+    <script type="text/javascript" src="plugins/ui.enchant.js"></script>
+    <script type="text/javascript" src="plugins/tl.enchant.js"></script>
+    <script type="text/javascript" src="js/stage-common.js"></script>
+    <script type="text/javascript" src="js/stage103.js"></script>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous" />
+    <link rel="stylesheet" href="css/default.css" />
+    <link rel="stylesheet" href="css/stage103.css" />
+</head>
+<body class="container">
+<div id="editor">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h2 class="panel-title">虫を潰そう！</h2>
+                </div>
+                <div class="panel-body panel-padding">
+                    <pre>
+for (i = <input type="text" value="0" id="start-i" />; i &lt; <input type="text" value="15" id="end-i" />; i++) {
+    虫を生成;
+}</pre>
+                    <div class="input-group">
+                        <button class="btn btn-lg btn-primary" onclick="editData()">Edit</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
