@@ -15,11 +15,11 @@ body {
     margin: 0px 10px;
 }
 
-#mapDropdownMenu {
+#map-dropdown-btn {
     width: 300px;
 }
 
-#mapSelected {
+#map-selected {
     float: left;
 }
 
