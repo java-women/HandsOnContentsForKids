@@ -24,6 +24,10 @@ public class MapEntity {
     @Column(name = "map_data", length = 2000)
     private String mMapData;
 
+    /** 衝突データ */
+    @Column(name = "collision_data", length = 2000)
+    private String mCollisionData;
+
     /**
      * コンストラクタ.
      */
@@ -48,8 +52,31 @@ public class MapEntity {
         this.mMapData = mapData;
     }
 
+    /**
+     * Gets collision data.
+     *
+     * @return the collision data
+     */
+    public String getCollisionData() {
+        return mCollisionData;
+    }
+
+    /**
+     * Sets collision data.
+     *
+     * @param collisionData the collision data
+     */
+    public void setCollisionData(String collisionData) {
+        mCollisionData = collisionData;
+    }
+
     @Override
     public String toString() {
-        return "MapEntity [id=" + mId + ", mapData=" + mMapData + "]";
+        return "MapEntity{" +
+                "mId=" + mId +
+                ", mMapData='" + mMapData + '\'' +
+                ", mCollisionData='" + mCollisionData + '\'' +
+                '}';
     }
+
 }
