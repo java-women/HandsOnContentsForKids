@@ -30,3 +30,7 @@
     height: 450px;
     border-color: silver;
 }
+
+.indent {
+    margin-left: 20px;
+}

@@ -10,6 +10,7 @@
     <script type="text/javascript" src="enchant.js"></script>
     <script type="text/javascript" src="js/stage-common.js"></script>
     <script type="text/javascript" src="js/stage203_action.js"></script>
+    <script type="text/javascript" src="js/stage203.js"></script>
 
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous" />
@@ -30,7 +31,11 @@
                         </div>
                     </div>
                     <div id="modal-content">
+                        function createGameScene() {
+                        <div class="indent">var scene = new Scene();</div>
                         <textarea id="text-editor"></textarea>
+                        <div class="indent">return scene;</div>
+                        }
                         <div id="button-style">
                             <button type="button" id="modal-close" class="btn btn-info">閉じる</button>
                             <button type="button" id="run" class="btn btn-primary">実行</button>
