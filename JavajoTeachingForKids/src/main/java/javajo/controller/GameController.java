@@ -65,6 +65,15 @@ public class GameController {
     }
 
     /**
+     * Game Stage202.
+     * @return テンプレートHTML
+     */
+    @RequestMapping(value = "/stage202", method = RequestMethod.GET)
+    public String stage202() {
+        return "stage202";
+    }
+
+    /**
      * Game Stage203.
      * @return テンプレートHTML
      */
