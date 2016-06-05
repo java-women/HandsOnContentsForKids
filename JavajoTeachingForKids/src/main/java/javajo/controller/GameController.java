@@ -57,4 +57,30 @@ public class GameController {
         return "chat";
     }
 
+    /**
+     * Game Stage103.
+     * @return テンプレートHTML
+     */
+    @RequestMapping(value = "/stage103", method = RequestMethod.GET)
+    public String stage103() {
+        return "stage103";
+    }
+
+    /**
+     * Game Stage202.
+     * @return テンプレートHTML
+     */
+    @RequestMapping(value = "/stage202", method = RequestMethod.GET)
+    public String stage202() {
+        return "stage202";
+    }
+
+    /**
+     * Game Stage203.
+     * @return テンプレートHTML
+     */
+    @RequestMapping(value = "/stage203", method = RequestMethod.GET)
+    public String stage203() {
+        return "stage203";
+    }
 }
