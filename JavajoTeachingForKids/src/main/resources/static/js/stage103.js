@@ -13,7 +13,6 @@ const CHARA_WIDTH = 24;
 const CHARA_HEIGHT = 24;
 const CHARA_IMG = 'debug.png';
 const MAP_IMG = 'map1.png';
-const MAP_SIZE = 20;
 const MAX_TIME = 5;
 
 /**
@@ -67,9 +66,9 @@ var show = {
         map.image = core.assets[MAP_IMG];
 
         var baseMap = [];
-        for (var i = 0; i < MAP_SIZE; i++) {
+        for (var i = 0; i < SCREEN_HEIGHT / MAP_HEIGHT; i++) {
             baseMap[i] = [];
-            for (var n = 0; n < MAP_SIZE; n++) {
+            for (var n = 0; n < SCREEN_WIDTH / MAP_HEIGHT; n++) {
                 baseMap[i][n] = 100;
             }
         }
