@@ -9,6 +9,7 @@ var inputEnemyAttack = 2;
 window.onload = function() {
 
     core = new Core(320, 320);
+    core.scale = SCALE;
     core.fps = 15;
     core.preload("avatarBg1.png", "avatarBg2.png", "avatarBg3.png", "monster/bigmonster1.gif");
     core.preload("start.png", "gameover.png", "clear.png");

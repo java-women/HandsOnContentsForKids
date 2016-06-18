@@ -1,6 +1,7 @@
 enchant();
 
 var core;
+const SCALE = 1.9;
 const CHARA_IMG = 'chara1.png';
 const AUTO = 'auto';
 const MANUAL = 'manual';
@@ -16,6 +17,7 @@ window.onload = function() {
 
     // 初期設定
     core = new Core(320, 320);
+    core.scale = SCALE;
     core.preload(CHARA_IMG);
     core.fps = 8;
 

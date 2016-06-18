@@ -1,4 +1,4 @@
-enchant();
+enchant();;
 
 /* プレイヤの初期位置 */
 var locationX = 6;
@@ -7,6 +7,7 @@ var locationY = 10;
 window.onload = function() {
 
     core = new Core(320, 320);
+    core.scale = SCALE;
     core.fps = 15;
     core.preload('chara0.png', 'map0.png');
     core.preload("start.png", "gameover.png", "clear.png");
