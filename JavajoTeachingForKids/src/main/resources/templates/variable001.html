@@ -2,13 +2,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8" />
-    <title>Stage001</title>
+    <title>敵を倒そう！</title>
     <link th:substituteby="common/head :: common_head"/>
     <script type="text/javascript" src="enchant.js"></script>
     <script type="text/javascript" src="plugins/avatar.enchant.js"></script>
     <script type="text/javascript" src="plugins/ui.enchant.js"></script>
     <script type="text/javascript" src="js/stage-common.js"></script>
-    <script type="text/javascript" src="js/stage001.js"></script>
+    <script type="text/javascript" src="js/variable001.js"></script>
 </head>
 <body>
 <div th:include="common/header :: common_header"></div>
@@ -24,22 +24,22 @@
                     </div>
                     <div class="panel-body">
                         <div class="input-group input-group-lg">
-                            <span class="input-group-addon">Your Life</span>
+                            <span class="input-group-addon">あなたの体力＝</span>
                             <input type="text" class="form-control" value="10" id="your-life" />
                         </div>
                         <br />
                         <div class="input-group input-group-lg">
-                            <span class="input-group-addon">Your Attack</span>
+                            <span class="input-group-addon">あなたの攻撃力＝</span>
                             <input type="text" class="form-control" value="1" id="your-attack" />
                         </div>
                         <br />
                         <div class="input-group  input-group-lg">
-                            <span class="input-group-addon">Enemy Life</span>
+                            <span class="input-group-addon">敵の体力＝</span>
                             <input type="text" class="form-control" value="10000" id="enemy-life" />
                         </div>
                         <br />
                         <div class="input-group  input-group-lg">
-                            <span class="input-group-addon">Enemy Attack</span>
+                            <span class="input-group-addon">敵の攻撃力＝</span>
                             <input type="text" class="form-control" value="2" id="enemy-attack" />
                         </div>
                         <br />

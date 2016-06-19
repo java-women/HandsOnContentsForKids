@@ -130,9 +130,9 @@ function createGameScene() {
     scene.addChild(label);
 
     /* アバターライフゲージ */
-    var avatarLife = new Label('Your Life');
+    var avatarLife = new Label('あなたの体力');
     avatarLife.color = '#ffffff';
-    avatarLife.font = '20px sans-serif';
+    avatarLife.font = '16px sans-serif';
     avatarLife.x = 10;
     avatarLife.y = 180;
     scene.addChild(avatarLife);
@@ -146,9 +146,9 @@ function createGameScene() {
     scene.addChild(avatarLifeBar);
 
     /* エネミーライフゲージ */
-    var enemyLife = new Label('Enemy Life');
+    var enemyLife = new Label('敵の体力');
     enemyLife.color = '#ffffff';
-    enemyLife.font = '20px sans-serif';
+    enemyLife.font = '16px sans-serif';
     enemyLife.x = 10;
     enemyLife.y = 200;
     scene.addChild(enemyLife);

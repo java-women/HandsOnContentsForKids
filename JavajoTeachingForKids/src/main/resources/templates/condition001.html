@@ -2,13 +2,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8" />
-    <title>Stage101</title>
+    <title>迷路を抜けよう！</title>
     <link th:substituteby="common/head :: common_head"/>
-    <link th:substituteby="common/head_chat :: common_head_chat"/>
+    <link th:substituteby="common/head-chat :: common_head_chat"/>
     <script type="text/javascript" src="enchant.js"></script>
     <script type="text/javascript" src="plugins/ui.enchant.js"></script>
     <script type="text/javascript" src="js/stage-common.js"></script>
-    <script type="text/javascript" src="js/stage101.js"></script>
+    <script type="text/javascript" src="js/condition001.js"></script>
 </head>
 <body>
 <div th:include="common/header :: common_header"></div>
@@ -20,20 +20,15 @@
             <div class="col-sm-12">
                 <div class="panel panel-success">
                     <div class="panel-heading">
-                        <h2 class="panel-title">脱出しよう！</h2>
+                        <h2 class="panel-title">迷路を抜けよう！</h2>
                     </div>
                     <div class="panel-body">
-                        <div class="col-sm-6">
-                            <div class="input-group input-group-lg">
-                                <span class="input-group-addon">横</span>
-                                <input type="text" class="form-control" value="6" id="location-x" />
-                            </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="input-group input-group-lg">
-                                <span class="input-group-addon">縦</span>
-                                <input type="text" class="form-control" value="10" id="location-y" />
-                            </div>
+                        <div class="input-group input-group-lg">
+                            <span class="input-group-addon">どちらにまがる？</span>
+                            <select name ="rotate-dir" class="form-control" id="rotate-dir">
+                                <option value="2">右</option>
+                                <option value="3">左</option>
+                            </select>
                         </div>
                         <div class="col-sm-12">
                             <div class="input-group">
@@ -74,7 +69,7 @@
             </div>
         </div>
     </div>
-    </div>
+</div>
 
 <div th:include="common/footer :: common_footer"></div>
 
