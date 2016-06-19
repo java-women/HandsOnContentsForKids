@@ -1,33 +1,20 @@
 <!DOCTYPE html>
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" />
     <title>JavajoTeachingForKids</title>
     <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-    <link rel="stylesheet" href="css/default.css" />
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous" />
+    <link rel="stylesheet" href="../static/css/default.css" />
 </head>
 <body>
-<nav class="navbar navbar-default">
-    <div class="container-fluid">
-        <div class="navbar-header">
-            <a class="navbar-brand" href="/">
-                JavajoTeachingForKids
-            </a>
-        </div>
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav  navbar-right">
-                <li class="active"><a href="chat" target="chat">Chat</a></li>
-            </ul>
-        </div>
-    </div>
-</nav>
+<div th:include="common/header :: common_header"></div>
 
 <div class="container">
     <div class="jumbotron">
         <div class="row">
             <div class="col-lg-6">
-                <img src="javajo.png">
+                <img src="javajo.png" />
             </div>
             <div class="col-lg-6">
                 <div class="panel panel-danger">
@@ -92,10 +79,7 @@
     </div>
 </div>
 
-<hr class="featurette-divider" />
-<footer class="footer">
-    <p>2016 java-women community.</p>
-</footer>
+<div th:include="common/footer :: common_footer"></div>
 
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>

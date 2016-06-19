@@ -19,6 +19,16 @@ public class GameController {
     private GameService mGameService;
 
     /**
+     * 初期画面表示.
+     *
+     * @return テンプレートHTML
+     */
+    @RequestMapping(value = "/", method = RequestMethod.GET)
+    public String viewIndex() {
+        return "index";
+    }
+
+    /**
      * Game Stage001.
      * @return テンプレートHTML
      */
