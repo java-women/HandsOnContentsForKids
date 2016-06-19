@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8" />
     <title>Chat</title>
@@ -55,10 +55,7 @@
     </div>
 </div>
 
-<hr class="featurette-divider" />
-<footer class="footer">
-    <p>2016 java-women community.</p>
-</footer>
+<div th:include="common/footer :: common_footer"></div>
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
