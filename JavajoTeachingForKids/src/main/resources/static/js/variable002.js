@@ -1,6 +1,6 @@
 enchant();
 
-/* 初期値 */
+/* 初期値 */;
 var END_TIME=130;
 var SCROLL_START=64;
 var gameStatus=0; //1:GOAL 2:LOST
@@ -9,6 +9,7 @@ var inputEnemySpeed=10;
 
 window.onload = function(){
     core = new Core(320, 320);
+    core.scale = SCALE;
     core.fps = 15;
     core.preload("chara1.png", "map0.png","chara2.png");
     core.preload("start.png", "gameover.png", "clear.png");

@@ -4,6 +4,7 @@ import javajo.entity.MapEntity;
 import javajo.service.GameService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -19,56 +20,30 @@ public class GameController {
     private GameService mGameService;
 
     /**
-     * Game Stage001.
+     * 初期画面表示.
+     *
      * @return テンプレートHTML
      */
-    @RequestMapping(value = "/stage001", method = RequestMethod.GET)
-    public String stage001() {
-        return "stage001";
+    @RequestMapping(value = "/", method = RequestMethod.GET)
+    public String viewIndex() {
+        return "index";
     }
 
     /**
-     * Game Stage002.
+     * コンテンツ表示.
      * @return テンプレートHTML
      */
-    @RequestMapping(value = "/stage002", method = RequestMethod.GET)
-    public String stage002() {
-        return "stage002";
+    @RequestMapping(value = "stage-{content}", method = RequestMethod.GET)
+    public String viewContent(@PathVariable String content) {
+        return content;
     }
 
     /**
-     * Game Stage003.
-     * @return テンプレートHTML
-     */
-    @RequestMapping(value = "/stage003", method = RequestMethod.GET)
-    public String stage003() {
-        return "stage003";
-    }
-
-    /**
-     * Game Stage101.
-     * @return テンプレートHTML
-     */
-    @RequestMapping(value = "/stage101", method = RequestMethod.GET)
-    public String stage101() {
-        return "stage101";
-    }
-
-    /**
-     * Game Stage201.
-     * @return テンプレートHTML
-     */
-    @RequestMapping(value = "/stage201", method = RequestMethod.GET)
-    public String stage201() {
-        return "stage201";
-    }
-
-    /**
-     * Game Stage201(マップ保存).
+     * マップ保存.
      * @param mapEntity MapEntity
      */
     @ResponseBody
-    @RequestMapping(value = "/stage201/save", method = RequestMethod.POST)
+    @RequestMapping(value = "/applied002/save", method = RequestMethod.POST)
     public void stage201Save(final MapEntity mapEntity) {
         this.mGameService.saveMap(mapEntity);
     }
@@ -80,33 +55,6 @@ public class GameController {
     @RequestMapping(value = "/chat", method = RequestMethod.GET)
     public String chat() {
         return "chat";
-    }
-
-    /**
-     * Game Stage102.
-     * @return テンプレートHTML
-     */
-    @RequestMapping(value = "/stage102", method = RequestMethod.GET)
-    public String stage102() {
-        return "stage102";
-    }
-
-    /**
-     * Game Stage103.
-     * @return テンプレートHTML
-     */
-    @RequestMapping(value = "/stage103", method = RequestMethod.GET)
-    public String stage103() {
-        return "stage103";
-    }
-
-    /**
-     * Game Stage203.
-     * @return テンプレートHTML
-     */
-    @RequestMapping(value = "/stage203", method = RequestMethod.GET)
-    public String stage203() {
-        return "stage203";
     }
 
 }

@@ -1,3 +1,4 @@
+const SCALE = 1.9;
 var core;
 
 /**

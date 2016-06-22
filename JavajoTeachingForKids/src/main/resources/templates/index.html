@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>JavajoTeachingForKids</title>
+    <link th:substituteby="common/head :: common_head"/>
+</head>
+<body>
+<div th:include="common/header :: common_header"></div>
+
+<div class="container">
+    <div class="jumbotron">
+        <div class="row">
+            <div class="col-lg-6">
+                <img src="javajo.png" />
+            </div>
+            <div class="col-lg-6">
+                <div class="panel panel-danger">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">"変数"について学ぼう！</h3>
+                    </div>
+                    <div class="panel-body">
+                        <ul>
+                            <li><a href="stage-variable001" target="_blank">敵を倒そう！</a></li>
+                            <li><a href="stage-variable002" target="_blank">ゴールに辿り着こう！</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="panel panel-warning">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">"座標"について学ぼう！</h3>
+                    </div>
+                    <div class="panel-body">
+                        <ul>
+                            <li><a href="stage-coordinate001" target="_blank">脱出しよう！</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">"繰り返し"について学ぼう！</h3>
+                    </div>
+                    <div class="panel-body">
+                        <ul>
+                            <li><a href="stage-iteration001" target="_blank">虫を潰そう！</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="panel panel-success">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">"条件"について学ぼう！</h3>
+                    </div>
+                    <div class="panel-body">
+                        <ul>
+                            <li><a href="stage-condition001" target="_blank">迷路を抜けよう！</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">応用編</h3>
+                    </div>
+                    <div class="panel-body">
+                        <ul>
+                            <li><a href="stage-applied001" target="_blank">くまさんを動かそう！</a></li>
+                            <li><a href="stage-applied002" target="_blank">マップを作ろう！</a></li>
+                            <li><a href="stage-applied003" target="_blank">ソースコードを書いてみよう！</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div th:include="common/footer :: common_footer"></div>
+
+</body>
+</html>
+

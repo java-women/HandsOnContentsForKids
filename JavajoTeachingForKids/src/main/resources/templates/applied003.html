@@ -1,29 +1,28 @@
 <!DOCTYPE html>
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8" />
-    <title>Stage203</title>
+    <title>ソースコードを書いてみよう！</title>
 
-    <!-- Latest compiled and minified JavaScript -->
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+    <link th:substituteby="common/head :: common_head"/>
     <script type="text/javascript" src="enchant.js"></script>
     <script type="text/javascript" src="js/stage-common.js"></script>
-    <script type="text/javascript" src="js/stage203_action.js"></script>
-    <script type="text/javascript" src="js/stage203.js"></script>
+    <script type="text/javascript" src="js/applied003_action.js"></script>
+    <script type="text/javascript" src="js/applied003.js"></script>
 
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous" />
-    <link rel="stylesheet" href="css/default.css" />
-    <link rel="stylesheet" href="css/stage203.css" />
+    <link rel="stylesheet" href="css/applied003.css" />
 </head>
-<body class="container">
+<body>
+<div th:include="common/header :: common_header"></div>
+
+<div class="container">
+    <div id="enchant-stage"></div>
     <div id="editor">
         <div class="row">
             <div class="col-lg-12">
                 <div class="panel panel-primary">
                     <div class="panel-heading">
-                        <h2 class="panel-title">stage203.js</h2>
+                        <h2 class="panel-title">applied003.js</h2>
                     </div>
                     <div class="panel-body panel-padding">
                         <div class="input-group">
@@ -46,5 +45,9 @@
             </div>
         </div>
     </div>
+</div>
+
+<div th:include="common/footer :: common_footer"></div>
+
 </body>
 </html>

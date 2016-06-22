@@ -4,7 +4,6 @@ enchant();
 const WIDTH = 320;
 const HEIGHT = 320;
 const GRID = 16;
-const SCALE = 1.5;
 const FPS = 15;
 
 // 初期マップ作成

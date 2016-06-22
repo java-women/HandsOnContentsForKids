@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>虫を潰そう！</title>
+
+    <link th:substituteby="common/head :: common_head"/>
+    <script type="text/javascript" src="enchant.js"></script>
+    <script type="text/javascript" src="plugins/ui.enchant.js"></script>
+    <script type="text/javascript" src="plugins/tl.enchant.js"></script>
+    <script type="text/javascript" src="js/stage-common.js"></script>
+    <script type="text/javascript" src="js/iteration001.js"></script>
+
+    <link rel="stylesheet" href="css/iteration001.css" />
+</head>
+<body>
+<div th:include="common/header :: common_header"></div>
+
+<div class="container">
+    <div id="enchant-stage"></div>
+    <div id="editor">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <h2 class="panel-title">虫を潰そう！</h2>
+                    </div>
+                    <div class="panel-body panel-padding">
+                        <pre>
+    for (i = <input type="text" value="0" id="start-i" />; i &lt; <input type="text" value="15" id="end-i" />; i++) {
+        虫を生成;
+    }</pre>
+                        <div class="input-group">
+                            <button class="btn btn-lg btn-primary" onclick="editData()">Edit</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div th:include="common/footer :: common_footer"></div>
+
+</body>
+</html>

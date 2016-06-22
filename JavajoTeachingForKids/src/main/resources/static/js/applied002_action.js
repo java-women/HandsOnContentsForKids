@@ -30,7 +30,7 @@ $(function(){
     $("#save").click(function() {
         $.ajax({
             type: 'POST',
-            url: "stage201/save",
+            url: "applied002/save",
             data: {
                 "mapData": JSON.stringify(mapData),
                 "collisionData": JSON.stringify(collisionData)

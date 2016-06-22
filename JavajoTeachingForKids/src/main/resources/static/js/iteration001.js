@@ -22,6 +22,7 @@ window.onload = function() {
 
     // 初期設定
     core = new Core(SCREEN_WIDTH, SCREEN_HEIGHT);
+    core.scale = SCALE;
     core.preload(MAP_IMG, CHARA_IMG);
     core.preload('start.png', 'gameover.png', 'clear.png');
     core.fps = 15;
