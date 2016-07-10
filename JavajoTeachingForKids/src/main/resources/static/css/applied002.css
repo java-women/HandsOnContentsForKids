@@ -23,12 +23,12 @@ body {
     float: left;
 }
 
-ul > li {
+ul#map-dropdown-menu > li {
     float: left;
     width: 32%;
     border: none;
 }
 
-ul > li:nth-child(3n+2) {
+ul#map-dropdown-menu > li:nth-child(3n+2) {
     margin: 0 1%;
 }
