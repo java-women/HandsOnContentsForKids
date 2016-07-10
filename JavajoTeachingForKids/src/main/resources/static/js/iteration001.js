@@ -11,7 +11,7 @@ const MAP_WIDTH = 16;
 const MAP_HEIGHT = 16;
 const CHARA_WIDTH = 24;
 const CHARA_HEIGHT = 24;
-const CHARA_IMG = 'debug.png';
+const CHARA_IMG = 'findbugs.png';
 const MAP_IMG = 'map1.png';
 const MAX_TIME = 5;
 
