@@ -3,8 +3,9 @@ enchant();
 var core;
 var charaNumber;
 
-const minChara = 0;
+const MIN_CHARA = 0;
 var maxChara = 15;
+const MAX_ID = 'end-i';
 
 const SCREEN_WIDTH = 320;
 const SCREEN_HEIGHT = 320;
@@ -81,7 +82,7 @@ var show = {
     // キャラクター
     character: function(scene) {
         // forの数だけ表示
-        for (var m = minChara; m < parseInt(maxChara); m++) {
+        for (var m = MIN_CHARA; m < parseInt(maxChara); m++) {
             var chara = new Chara();
             chara.moveTo(Math.random() * (SCREEN_WIDTH - chara.width), Math.random() * (SCREEN_HEIGHT - chara.height));
             scene.addChild(chara);
@@ -104,7 +105,9 @@ var show = {
  */
 function editData() {
     try {
-        maxChara = document.getElementById('end-i').value;
+        checkPositiveNumber(MAX_ID);
+        getIntValue(MAX_ID, 0, 1000);
+        maxChara = document.getElementById(MAX_ID).value;
         core.replaceScene(createStartScene());
 
     } catch(e) {
@@ -222,7 +225,7 @@ var Score = Class.create(Label, {
     initialize: function() {
         Label.call(this);
 
-        charaNumber = maxChara - minChara;
+        charaNumber = maxChara - MIN_CHARA;
         this.moveTo(5, SCREEN_HEIGHT - 20);
         this.color = 'white';
         this.font = "15px 'Consolas', 'Monaco', 'ＭＳ ゴシック'";
