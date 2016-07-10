@@ -79,3 +79,15 @@ function getIntValue(id, min, max) {
     }
     return parseInt(value);
 }
+
+/**
+ * 正の数かどうかのcheck
+ */
+function checkPositiveNumber(id) {
+    var value = document.getElementById(id).value;
+    if (!isFinite(value)) {
+        throw "Invalid data";
+    } else if (value < 0) {
+        throw "Minus data"
+    }
+}
