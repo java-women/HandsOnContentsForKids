@@ -23,7 +23,7 @@
             <div class="col-lg-12">
                 <div class="panel panel-primary">
                     <div class="panel-heading">
-                        <h2 class="panel-title">applied001.js</h2>
+                        <h2 class="panel-title">くまさんを動かそう！</h2>
                     </div>
                     <div class="panel-body panel-padding">
                             <pre id="editor-space">
@@ -34,7 +34,7 @@ window.onload = function() {
     core.preload('chara1.png');
     core.fps = 10;
 
-    // 背景色を変更
+    // はいけいの色をへんこう
     core.backgroundColor = "#<input type="text" value="3CB371" class="jscolor form-control" id="color-picker" />";
 
     core.onload = function() {
@@ -45,17 +45,17 @@ window.onload = function() {
 
         bear.on('enterframe', function() {
 
-            // キャラクターの動きを変更
+            // キャラクターの動きをへんこう
             <select class="form-control" id="select-move">
                 <option value="notMove">（なし）</option>
-                <option value="auto">bearMove.auto(this, core);</option>
-                <option value="manual">bearMove.manual(this, core);</option>
+                <option value="auto">じどうで動かす</option>
+                <option value="manual">キーボードで動かす</option>
             </select>
         });
 
         core.rootScene.addChild(bear);
 
-            // キャラクターを選択
+            // キャラクターをえらぶ
             <select class="form-control" id="select-bear">
                 <option value="notWalk">bear.frame = [0];</option>
                 <option value="bear">bear.frame = [0, 1, 0, 2];</option>

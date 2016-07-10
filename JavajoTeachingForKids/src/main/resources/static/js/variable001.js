@@ -95,7 +95,7 @@ function createGameScene() {
 
         if (avatar.life <= 0) avatar.action = "dead";
 
-        avatarLifeBar.width = avatar.life * (200 / inputYourLife);
+        avatarLifeBar.width = avatar.life * (180 / inputYourLife);
 
         if (avatar.life == 0) {
             core.replaceScene(createGameoverScene());
@@ -113,7 +113,7 @@ function createGameScene() {
             }
         }
 
-        enemyLifeBar.width = enemy.life * (200 / inputEnemyLife);
+        enemyLifeBar.width = enemy.life * (180 / inputEnemyLife);
 
         if (enemy.life <= 0) {
             enemy.action = "dead";
@@ -122,7 +122,7 @@ function createGameScene() {
     });
 
     /* 操作説明 */
-    var label = new Label('移動： ←→<br>攻撃：スペース');
+    var label = new Label('いどう： ←→<br>こうげき：スペース');
     label.color = '#ffffff';
     label.font = '20px sans-serif';
     label.x = 10;
@@ -138,15 +138,15 @@ function createGameScene() {
     scene.addChild(avatarLife);
 
     var avatarLifeBar = new Entity();
-    avatarLifeBar.width = 200;
+    avatarLifeBar.width = 180;
     avatarLifeBar.height = 15;
     avatarLifeBar.backgroundColor = '#00ff00';
-    avatarLifeBar.x = 110;
+    avatarLifeBar.x = 130;
     avatarLifeBar.y = 180;
     scene.addChild(avatarLifeBar);
 
     /* エネミーライフゲージ */
-    var enemyLife = new Label('敵の体力');
+    var enemyLife = new Label('モンスターの体力');
     enemyLife.color = '#ffffff';
     enemyLife.font = '16px sans-serif';
     enemyLife.x = 10;
@@ -154,10 +154,10 @@ function createGameScene() {
     scene.addChild(enemyLife);
 
     var enemyLifeBar = new Entity();
-    enemyLifeBar.width = 200;
+    enemyLifeBar.width = 180;
     enemyLifeBar.height = 15;
     enemyLifeBar.backgroundColor = '#ff0000';
-    enemyLifeBar.x = 110;
+    enemyLifeBar.x = 130;
     enemyLifeBar.y = 200;
     scene.addChild(enemyLifeBar);
 
