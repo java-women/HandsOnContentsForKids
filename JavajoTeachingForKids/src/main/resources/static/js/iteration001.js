@@ -14,7 +14,7 @@ const CHARA_WIDTH = 24;
 const CHARA_HEIGHT = 24;
 const CHARA_IMG = 'findbugs.png';
 const MAP_IMG = 'map1.png';
-const MAX_TIME = 5;
+const MAX_TIME = 10;
 
 /**
  * enchant.jsの描画
