@@ -12,8 +12,8 @@ window.onload = function() {
 
     // ゲーム本体の描画
     core.onload = function() {
-        document.getElementById('location-x').value=0;
-        document.getElementById('location-y').value=0;
+        document.getElementById('location-x').value=1;
+        document.getElementById('location-y').value=1;
         core.replaceScene(createGameScene());
     };
 
@@ -44,10 +44,6 @@ function createGameScene() {
     	// タッチした位置に移動
     	targetX = e.x - (bear.width/2);	// スプライト幅の半分の値を引くことで中央にする
     	targetY = e.y - (bear.height/2);	// スプライト高さの半分の値を引くことで中央にする
-
-    	//タッチした座標表示(小数点は四捨五入)
-        document.getElementById('location-x').value=Math.round(targetX);
-        document.getElementById('location-y').value=Math.round(targetY);
     });
     	// タッチ終了
     scene.addEventListener("touchend", function(e) { isTouch = false; });
@@ -65,6 +61,10 @@ function createGameScene() {
     	// 徐々にタッチした位置に近づける
     	var moveX = (targetX - bear.x)*0.25;
     	var moveY = (targetY - bear.y)*0.25;
+    	//タッチした座標表示(小数点は四捨五入)
+    	document.getElementById('location-x').value=Math.round((bear.x+8)/16+1);
+        document.getElementById('location-y').value=Math.round((bear.y+16)/16+1);
+        //移動
     	bear.moveBy(moveX, moveY);
     	}
     });
