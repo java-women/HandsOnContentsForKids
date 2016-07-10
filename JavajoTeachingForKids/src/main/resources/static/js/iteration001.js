@@ -2,7 +2,8 @@ enchant();
 
 var core;
 var charaNumber;
-var minChara = 0;
+
+const minChara = 0;
 var maxChara = 15;
 
 const SCREEN_WIDTH = 320;
@@ -80,7 +81,7 @@ var show = {
     // キャラクター
     character: function(scene) {
         // forの数だけ表示
-        for (var m = minChara; m < maxChara; m++) {
+        for (var m = minChara; m < parseInt(maxChara); m++) {
             var chara = new Chara();
             chara.moveTo(Math.random() * (SCREEN_WIDTH - chara.width), Math.random() * (SCREEN_HEIGHT - chara.height));
             scene.addChild(chara);
@@ -103,9 +104,7 @@ var show = {
  */
 function editData() {
     try {
-        minChara = document.getElementById('start-i').value;
         maxChara = document.getElementById('end-i').value;
-
         core.replaceScene(createStartScene());
 
     } catch(e) {
