@@ -4,7 +4,6 @@
     <meta charset="UTF-8" />
     <title>迷路を抜けよう！</title>
     <link th:substituteby="common/head :: common_head"/>
-    <link th:substituteby="common/head-chat :: common_head_chat"/>
     <script type="text/javascript" src="enchant.js"></script>
     <script type="text/javascript" src="plugins/ui.enchant.js"></script>
     <script type="text/javascript" src="js/stage-common.js"></script>
@@ -33,35 +32,6 @@
                         <div class="col-sm-12">
                             <div class="input-group">
                                 <button class="btn btn-lg btn-primary" onclick="editData()">Edit</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-12">
-                <div class="panel panel-success">
-                    <div class="panel-heading">
-                        <h2 class="panel-title">チャット</h2>
-                    </div>
-                    <div class="panel-body">
-                        <div class="col-sm-12">
-                            <div class="form-group">
-                                <input type="text" class="form-control" placeholder="名前" id="name" />
-                                <textarea class="form-control" placeholder="メッセージ" id="message" cols="3"></textarea>
-                                <button class="btn btn-sm btn-primary" id="send">送信</button>
-                            </div>
-                        </div>
-                        <div class="col-sm-12">
-                            <div class="table-responsive">
-                                <table class="table table-striped table-hover">
-                                    <thead>
-                                    <th class="col-sm-2">日時</th>
-                                    <th class="col-sm-2">名前</th>
-                                    <th class="col-sm-8">メッセージ</th>
-                                    </thead>
-                                    <tbody id="messages">
-                                    </tbody>
-                                </table>
                             </div>
                         </div>
                     </div>
