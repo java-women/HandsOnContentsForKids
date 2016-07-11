@@ -124,58 +124,6 @@ function createGameScene(){
         });
     }
 
-    //敵キャラクター2を設定
-    var pig2 = new Sprite(32, 32);
-    pig2.image = core.assets["chara2.png"];
-    pig2.x = 230;
-    pig2.y = 40;
-    pig2.frame = 0;
-    scene.addChild(pig2);
-    if(gameStatus==0){
-        pig2.addEventListener("enterframe", function(){
-            //フレーム
-            this.frame = this.age % 2 + 6;
-            //動きを設定
-            if(this.age%36<18 ){
-                this.y += inputEnemySpeed;
-            } else {
-                this.y -= inputEnemySpeed;
-            }
-            //当たり判定
-            for (var i=1;i<2;i++){
-                if(this.intersect(bear)){
-                    gameStatus=2
-                }
-            }
-        });
-    }
-
-    //敵キャラクター2を設定
-    var pig3 = new Sprite(32, 32);
-    pig3.image = core.assets["chara2.png"];
-    pig3.x = 340;
-    pig3.y = 80;
-    pig3.frame = 0;
-    scene.addChild(pig3);
-    if(gameStatus==0){
-        pig3.addEventListener("enterframe", function(){
-            //フレーム
-            this.frame = this.age % 2 + 6;
-            //動きを設定
-            if(this.age%24<12 ){
-                this.y += inputEnemySpeed;
-            } else {
-                this.y -= inputEnemySpeed;
-            }
-            //当たり判定
-            for (var i=1;i<2;i++){
-                if(this.intersect(bear)){
-                    gameStatus=2
-                }
-            }
-        });
-    }
-
     //MAPの動きを設定
     map.addEventListener("enterframe", function(){
         //ゴール判定
@@ -187,8 +135,6 @@ function createGameScene(){
                 bear.x-=4;
                 map.x-=3;
                 pig1.x-=3;
-                pig2.x-=3;
-                pig3.x-=3;
             }
         }
     });
