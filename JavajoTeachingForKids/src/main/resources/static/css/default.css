@@ -15,3 +15,9 @@ div#editor {
     margin-left: 10px;
     width: 500px;
 }
+
+button#toggle-btn {
+    float: left;
+    margin-left: 10px;
+    margin-bottom: 10px;
+}

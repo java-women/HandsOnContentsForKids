@@ -91,3 +91,14 @@ function checkPositiveNumber(id) {
         throw "Minus data"
     }
 }
+
+/**
+ * Toggleボタン切り替え
+ */
+function toggle_button() {
+    if (document.getElementById('editor').getAttribute('class') == 'collapse') {
+        document.getElementById('toggle-btn').innerHTML  = '<span class="glyphicon glyphicon-minus"></span> エディタをとじる';
+    } else {
+        document.getElementById('toggle-btn').innerHTML  = '<span class="glyphicon glyphicon-plus"></span> エディタをひらく';
+    }
+}
