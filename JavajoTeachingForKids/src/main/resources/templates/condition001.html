@@ -14,7 +14,8 @@
 
 <div class="container">
     <div id="enchant-stage"></div>
-    <div id="editor">
+    <div th:include="common/toggle-button :: common_toggle_button"></div>
+    <div id="editor" class="collapse">
         <div class="row">
             <div class="col-sm-12">
                 <div class="panel panel-success">
@@ -30,6 +31,7 @@
                             </select>
                         </div>
                         <div class="col-sm-12">
+                            <br />
                             <div class="input-group">
                                 <button class="btn btn-lg btn-primary" onclick="editData()"><span class="glyphicon glyphicon-edit"></span>  へんこう</button>
                             </div>
