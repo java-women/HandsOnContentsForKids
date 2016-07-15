@@ -9,7 +9,8 @@ var inputEnemySpeed=10;
 var inputMotionHeight=10;
 var inputEnemyHeight=100;
 var inputEnemyWidth=100;
-var ENEMY_MOTION=2;
+//敵キャラクター1の動き傾斜
+var RATE=2;
 
 window.onload = function(){
     core = new Core(320, 320);
@@ -117,7 +118,7 @@ function createGameScene(){
             //フレーム
             this.frame = this.age % 2 + 6;
             //動きを設定
-            if(this.age%(inputMotionHeight*ENEMY_MOTION)<(inputMotionHeight*(ENEMY_MOTION/2)) ){
+            if(this.age%(inputMotionHeight*RATE)<(inputMotionHeight*(RATE/2)) ){
                 this.y += inputEnemySpeed;
             } else {
                 this.y -= inputEnemySpeed;
