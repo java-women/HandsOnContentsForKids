@@ -6,6 +6,10 @@ var SCROLL_START=64;
 var gameStatus=0; //1:GOAL 2:LOST
 
 var inputEnemySpeed=10;
+var inputMotionHeight=10;
+var inputEnemyHeight=100;
+var inputEnemyWidth=100;
+var ENEMY_MOTION=2;
 
 window.onload = function(){
     core = new Core(320, 320);
@@ -23,7 +27,10 @@ window.onload = function(){
  */
 function editData(){
     try {
-        inputEnemySpeed = getIntValue("enemy-speed", 1);
+        inputEnemySpeed = getIntValue("enemy-speed",3,100);
+        inputMotionHeight = getIntValue("motion-height",0,100);
+        inputEnemyHeight = getIntValue("enemy-height",0,1000);
+        inputEnemyWidth = getIntValue("enemy-width",0,1000);
         core.replaceScene(createStartScene());
     } catch(e) {
         alert("うまく動かなかった。\r\nやり直してね。");
@@ -101,8 +108,8 @@ function createGameScene(){
     //敵キャラクター1を設定
     var pig1 = new Sprite(32, 32);
     pig1.image = core.assets["chara2.png"];
-    pig1.x = 100;
-    pig1.y = 100;
+    pig1.x = inputEnemyWidth;
+    pig1.y = inputEnemyHeight;
     pig1.frame = 0;
     scene.addChild(pig1);
     if(gameStatus==0){
@@ -110,7 +117,7 @@ function createGameScene(){
             //フレーム
             this.frame = this.age % 2 + 6;
             //動きを設定
-            if(this.age%24<12 ){
+            if(this.age%(inputMotionHeight*ENEMY_MOTION)<(inputMotionHeight*(ENEMY_MOTION/2)) ){
                 this.y += inputEnemySpeed;
             } else {
                 this.y -= inputEnemySpeed;
@@ -134,7 +141,7 @@ function createGameScene(){
                 //スクロール
                 bear.x-=4;
                 map.x-=3;
-                pig1.x-=3;
+                pig1.x-=inputEnemySpeed;
             }
         }
     });
