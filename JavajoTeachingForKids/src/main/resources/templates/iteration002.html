@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>くりかえしを使って図を作ってみよう！</title>
+
+    <link th:substituteby="common/head :: common_head"/>
+    <!--
+    <script type="text/javascript" src="enchant.js"></script>
+    <script type="text/javascript" src="plugins/ui.enchant.js"></script>
+    <script type="text/javascript" src="plugins/tl.enchant.js"></script> -->
+    <script type="text/javascript" src="js/stage-common.js"></script>
+    <script type="text/javascript" src="js/iteration002.js"></script>
+
+    <link rel="stylesheet" href="css/iteration002.css" />
+</head>
+<body>
+<div th:include="common/header :: common_header"></div>
+
+<div class="container">
+    <div id="enchant-stage">
+        <canvas id="canvas0" width="500" height="400" style="border:1px black solid"></canvas>
+    </div>
+    <div th:include="common/toggle-button :: common_toggle_button"></div>
+    <div id="editor" class="collapse">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <h2 class="panel-title">くりかえしを使って図を作ってみよう！</h2>
+                    </div>
+                    <div class="panel-body panel-padding">
+                        <!--
+                        <div class="col-sm-6">
+                            <div class="input-group input-group-lg">
+                                <span class="input-group-addon">よこ</span>
+                                <input type="text" class="form-control" value="6" id="speedX" />
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="input-group input-group-lg">
+                                <span class="input-group-addon">たて</span>
+                                <input type="text" class="form-control" value="10" id="speedY" />
+                            </div>
+                        </div>
+                         -->
+                        <div class="col-sm-6">
+                            <div class="input-group input-group-lg">
+                                <span class="input-group-addon">何回まがる？</span>
+                                <input type="text" class="form-control" value="10" id="ite_max" />
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <br />
+                            <div class="input-group">
+                                <button class="btn btn-lg btn-primary" onclick="editData()"><span class="glyphicon glyphicon-edit"></span>  へんこう</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div th:include="common/footer :: common_footer"></div>
+
+</body>
+</html>
