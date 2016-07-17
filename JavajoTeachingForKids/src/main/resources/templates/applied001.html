@@ -27,44 +27,27 @@
                     </div>
                     <div class="panel-body panel-padding">
                             <pre id="editor-space">
-enchant();
+ゲーム画面のせってい {
 
-window.onload = function() {
-    var core = new Core(320, 320);
-    core.preload('chara1.png');
-    core.fps = 10;
+    はいけい色 = <button class="btn jscolor {valueElement:'color-picker', value:'3CB371'}" id="color-button">クリックして色をえらんでね</button>
+                           <input type="hidden" id="color-picker" />
 
-    // はいけいの色をへんこう
-    core.backgroundColor = "#<input type="text" value="3CB371" class="jscolor form-control" id="color-picker" />";
+    くまさんのせってい {
 
-    core.onload = function() {
-        var bear = new Sprite(32, 32);
-        bear.image = core.assets['chara1.png'];
-        bear.x = 0;
-        bear.y = 0;
+        // くまさんの動きをへんこう
+        <select class="form-control" id="select-move">
+            <option value="notMove">動かない</option>
+            <option value="auto">じどうで動かす</option>
+            <option value="manual">キーボードで動かす</option>
+        </select>
 
-        bear.on('enterframe', function() {
-
-            // キャラクターの動きをへんこう
-            <select class="form-control" id="select-move">
-                <option value="notMove">（なし）</option>
-                <option value="auto">じどうで動かす</option>
-                <option value="manual">キーボードで動かす</option>
-            </select>
-        });
-
-        core.rootScene.addChild(bear);
-
-            // キャラクターをえらぶ
-            <select class="form-control" id="select-bear">
-                <option value="notWalk">bear.frame = [0];</option>
-                <option value="bear">bear.frame = [0, 1, 0, 2];</option>
-                <option value="whiteBear">bear.frame = [5, 6, 5, 7];</option>
-                <option value="girlBear">bear.frame = [10, 11, 10, 12];</option>
-            </select>
+        // キャラクターをえらぶ
+        <select class="form-control" id="select-bear">
+            <option value="bear">茶色のくま</option>
+            <option value="whiteBear">白いくま</option>
+            <option value="girlBear">リボンのついたくま</option>
+        </select>
     };
-
-    core.start();
 };
                         </pre>
                     </div>

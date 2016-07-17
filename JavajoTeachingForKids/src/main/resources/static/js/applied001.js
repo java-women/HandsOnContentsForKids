@@ -5,7 +5,6 @@ const SCALE = 1.9;
 const CHARA_IMG = 'chara1.png';
 const AUTO = 'auto';
 const MANUAL = 'manual';
-const NOT_WALK = 'notWalk';
 const BEAR = 'bear';
 const WHITE_BEAR = 'whiteBear';
 const GIRL_BEAR = 'girlBear';
@@ -62,9 +61,6 @@ var createGameScene = function(selectMove, selectBear) {
 
     // 画面からのキャラクター変更
     switch(selectBear) {
-        case NOT_WALK:
-            bear.frame = [0];
-            break;
         case BEAR:
             bear.frame = [0, 1, 0, 2];
             break;
