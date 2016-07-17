@@ -35,7 +35,8 @@ window.onload = function() {
     core.fps = 10;
 
     // はいけいの色をへんこう
-    core.backgroundColor = "#<input type="text" value="3CB371" class="jscolor form-control" id="color-picker" />";
+    core.backgroundColor = <button class="btn jscolor {valueElement:'color-picker', value:'3CB371'}" id="color-button">クリックして色をえらんでね</button>
+                           <input type="hidden" id="color-picker" />
 
     core.onload = function() {
         var bear = new Sprite(32, 32);
