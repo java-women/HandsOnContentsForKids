@@ -66,6 +66,7 @@ function createGameScene() {
     avatar.action = "run";
     avatar.life = parseInt(inputYourLife);
     avatar.attack = parseInt(inputYourAttack);
+    avatar.sleep = 30;
     scene.addChild(avatar);
 
     /* エネミー */
@@ -79,11 +80,13 @@ function createGameScene() {
     /* アバター動作 */
     avatar.addEventListener('enterframe', function() {
         /* 左右のみ移動可 */
-        if (core.input.left) this.x -= 5;
-        if (core.input.right) this.x += 5;
+        if (avatar.sleep == 30) {
+            if (core.input.left) this.x -= 5;
+            if (core.input.right) this.x += 5;
 
-        if (this.x <= 0) this.x = 0;
-        if (this.x > 260) this.x = 260;
+            if (this.x <= 0) this.x = 0;
+            if (this.x > 260) this.x = 260;
+        }
 
         /** 攻撃 */
         if (core.input.b) {
@@ -93,11 +96,14 @@ function createGameScene() {
             }
         }
 
-        if (avatar.life <= 0) avatar.action = "dead";
+        if (avatar.life <= 0) {
+            avatar.action = "dead";
+            avatar.sleep--;
+        }
 
         avatarLifeBar.width = avatar.life * (300 / inputYourLife);
 
-        if (avatar.life == 0) {
+        if (avatar.sleep == 0 && avatar.life <= 0) {
             core.replaceScene(createGameoverScene());
         }
     });
@@ -115,8 +121,10 @@ function createGameScene() {
 
         enemyLifeBar.width = enemy.life * (300 / inputEnemyLife);
 
+        console.log(core.frame);
+
         if (enemy.life <= 0) {
-            enemy.action = "dead";
+            enemy.action = "disappear";
             core.replaceScene(createGameclearScene());
         }
     });
