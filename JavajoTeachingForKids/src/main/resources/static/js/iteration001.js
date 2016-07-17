@@ -16,6 +16,7 @@ const CHARA_HEIGHT = 24;
 const CHARA_IMG = 'findbugs.png';
 const MAP_IMG = 'map1.png';
 const MAX_TIME = 10;
+const FPS = 10;
 
 /**
  * enchant.jsの描画
@@ -27,7 +28,7 @@ window.onload = function() {
     core.scale = SCALE;
     core.preload(MAP_IMG, CHARA_IMG);
     core.preload('start.png', 'gameover.png', 'clear.png');
-    core.fps = 15;
+    core.fps = FPS;
 
     // ゲーム本体の描画
     core.onload = function() {
