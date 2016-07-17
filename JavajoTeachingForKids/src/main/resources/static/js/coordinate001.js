@@ -160,6 +160,7 @@ function createGameScene() {
 
     var stage = new Group();
     stage.addChild(map);
+    stage.addChild(drawGrid());
     stage.addChild(player);
     scene.addChild(stage);
     scene.addChild(timer);
