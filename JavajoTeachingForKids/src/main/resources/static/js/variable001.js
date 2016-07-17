@@ -95,7 +95,7 @@ function createGameScene() {
 
         if (avatar.life <= 0) avatar.action = "dead";
 
-        avatarLifeBar.width = avatar.life * (180 / inputYourLife);
+        avatarLifeBar.width = avatar.life * (300 / inputYourLife);
 
         if (avatar.life == 0) {
             core.replaceScene(createGameoverScene());
@@ -113,7 +113,7 @@ function createGameScene() {
             }
         }
 
-        enemyLifeBar.width = enemy.life * (180 / inputEnemyLife);
+        enemyLifeBar.width = enemy.life * (300 / inputEnemyLife);
 
         if (enemy.life <= 0) {
             enemy.action = "dead";
@@ -126,7 +126,7 @@ function createGameScene() {
     label.color = '#ffffff';
     label.font = '20px sans-serif';
     label.x = 10;
-    label.y = 220;
+    label.y = 260;
     scene.addChild(label);
 
     /* アバターライフゲージ */
@@ -138,11 +138,11 @@ function createGameScene() {
     scene.addChild(avatarLife);
 
     var avatarLifeBar = new Entity();
-    avatarLifeBar.width = 180;
+    avatarLifeBar.width = 300;
     avatarLifeBar.height = 15;
     avatarLifeBar.backgroundColor = '#00ff00';
-    avatarLifeBar.x = 130;
-    avatarLifeBar.y = 180;
+    avatarLifeBar.x = 10;
+    avatarLifeBar.y = 200;
     scene.addChild(avatarLifeBar);
 
     /* エネミーライフゲージ */
@@ -150,15 +150,15 @@ function createGameScene() {
     enemyLife.color = '#ffffff';
     enemyLife.font = '16px sans-serif';
     enemyLife.x = 10;
-    enemyLife.y = 200;
+    enemyLife.y = 220;
     scene.addChild(enemyLife);
 
     var enemyLifeBar = new Entity();
-    enemyLifeBar.width = 180;
+    enemyLifeBar.width = 300;
     enemyLifeBar.height = 15;
     enemyLifeBar.backgroundColor = '#ff0000';
-    enemyLifeBar.x = 130;
-    enemyLifeBar.y = 200;
+    enemyLifeBar.x = 10;
+    enemyLifeBar.y = 240;
     scene.addChild(enemyLifeBar);
 
     return scene;
