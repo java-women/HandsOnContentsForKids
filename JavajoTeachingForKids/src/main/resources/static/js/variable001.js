@@ -105,9 +105,9 @@ function createGameScene() {
     /* エネミー動作 */
     enemy.addEventListener('enterframe', function() {
         /** 攻撃 */
-        if (core.frame % 100 == 0) {
-            enemy.action = "attack";
+        if (core.frame % 15 == 0) {
             if (this.intersect(avatar) && avatar.life > 0) {
+                enemy.action = "attack";
                 avatar.action = "damage";
                 avatar.life -= enemy.attack;
             }
