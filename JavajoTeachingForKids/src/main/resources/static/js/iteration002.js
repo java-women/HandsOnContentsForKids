@@ -69,7 +69,11 @@ function editData(){
     //speedy = getIntValue("speedY");
     speedX = 1.0;
     speedY = 2.0;
-    ite_max = getIntValue("ite_max");
+    try {
+        ite_max = getIntValue("ite_max", 0, 999);
+    } catch (e) {
+        alert("うまく動かなかった。\r\n半角数字の1から999の数字を入力してね。");
+    }
 
     clearInterval(interval);
 

@@ -24,10 +24,10 @@ window.onload = function(){
  */
 function editData(){
     try {
-        inputEnemySpeed = getIntValue("enemy-speed", 1);
+        inputEnemySpeed = getIntValue("enemy-speed", 1, 10000);
         core.replaceScene(createStartScene());
     } catch(e) {
-        alert("うまく動かなかった。\r\nやり直してね。");
+        alert("うまく動かなかった。\r\n半角数字の1から10000の数字を入力してね。");
     }
 }
 
