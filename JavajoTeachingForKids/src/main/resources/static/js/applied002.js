@@ -3,17 +3,19 @@ enchant();
 // 初期マップ作成
 var mapData = new Array();
 var collisionData = new Array();
-for (var i = 0; i < (HEIGHT / GRID); i++){
-    mapData[i] = new Array();
-    collisionData[i] = new Array();
-    for(var j = 0; j < (WIDTH / GRID); j++) {
-        mapData[i][j] = -1;
-        collisionData[i][j] = -1;
+
+function initMap() {
+    for (var i = 0; i < (HEIGHT / GRID); i++){
+        mapData[i] = new Array();
+        collisionData[i] = new Array();
+        for(var j = 0; j < (WIDTH / GRID); j++) {
+            mapData[i][j] = -1;
+            collisionData[i][j] = -1;
+        }
     }
 }
 
 window.onload = function() {
-
     core = new Core(WIDTH, HEIGHT);
     core.scale = SCALE;
     core.fps = FPS;
@@ -21,6 +23,7 @@ window.onload = function() {
     core.preload("start.png", "gameover.png", "clear.png");
 
     core.onload = function() {
+        initMap();
         core.replaceScene(createGameScene());
     };
 
@@ -71,4 +74,14 @@ function createGameScene() {
     scene.addChild(stage);
 
     return scene;
+}
+
+/**
+ * マップビューをクリア
+ */
+function viewClear(){
+    if(window.confirm('本当にいいんですね？')){
+        initMap();
+        core.replaceScene(createGameScene());
+    }
 }
