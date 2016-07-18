@@ -44,7 +44,13 @@ function createGameScene() {
     // タッチイベント定義
     scene.addEventListener("touchend", function(e) {
         // 選んだマップ
-        id = document.getElementById("map-selected").children[0].getAttribute("data-id");
+        var element = document.getElementById("map-selected").children;
+        if (element.length == 0) {
+            alert("マップをえらんでね。");
+            return;
+        }
+
+        id = element[0].getAttribute("data-id");
         collision = document.getElementById("map-selected").children[0].getAttribute("data-collision");
         if (id == null) {
             alert("マップを選んでね");
