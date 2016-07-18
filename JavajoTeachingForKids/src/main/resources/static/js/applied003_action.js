@@ -7,7 +7,7 @@ $(function() {
     $('#modal-open').click(function() {
         var jsText = window.sessionStorage.getItem(['javascript']);
 
-        if (jsText == '' || jsText == nullん) {
+        if (jsText == '' || jsText = null) {
             jsText = 'var bear = new Sprite(32, 32);\n'
                      + '\n'
                      + '// どの画像のキャラクターを使うか指定\n'
