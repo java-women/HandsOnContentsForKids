@@ -69,5 +69,7 @@ function createGameScene() {
     	}
     });
 
+    scene.addChild(drawGrid());
+
     return scene;
 }

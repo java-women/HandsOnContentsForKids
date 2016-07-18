@@ -1,11 +1,5 @@
 enchant();
 
-/* 初期値 */
-const WIDTH = 320;
-const HEIGHT = 320;
-const GRID = 16;
-const FPS = 15;
-
 // 初期マップ作成
 var mapData = new Array();
 var collisionData = new Array();
@@ -16,25 +10,6 @@ for (var i = 0; i < (HEIGHT / GRID); i++){
         mapData[i][j] = -1;
         collisionData[i][j] = -1;
     }
-}
-
-/* マス目の描画 */
-function drawGrid() {
-    var surface = new Surface(WIDTH, HEIGHT);
-    surface.context.strokeStyle = "#808080";
-    surface.context.beginPath();
-    for(i = 1; i <= WIDTH / GRID; i++){
-        surface.context.moveTo(i * GRID, 0);
-        surface.context.lineTo(i * GRID, HEIGHT);
-        surface.context.stroke();
-        surface.context.moveTo(0, i * GRID);
-        surface.context.lineTo(WIDTH, i * GRID);
-        surface.context.stroke();
-    }
-    var grid = new Sprite(WIDTH,HEIGHT);
-    grid.image=surface;
-
-    return grid;
 }
 
 window.onload = function() {
