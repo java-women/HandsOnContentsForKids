@@ -37,6 +37,16 @@ $(function(){
             },
             success:function(data){
                 alert("保存しました！");
+
+                // マップをPNGでダウンロード
+                var canvas = $("canvas")[0];
+                var base64 = canvas.toDataURL();
+                var a = document.createElement('a');
+                a.download = "map.png";
+                a.href = base64;
+                var evt = document.createEvent('MouseEvent');
+                evt.initEvent("click", true, false);
+                a.dispatchEvent( evt );
             },
             error:function(data,dataType){
                 alert("保存に失敗しました。");
