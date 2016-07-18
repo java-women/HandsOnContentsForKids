@@ -10,25 +10,27 @@ $(function() {
         if (jsText == '') {
             jsText = 'var bear = new Sprite(32, 32);\n'
                      + '\n'
-                     + '// どの画像のキャラクターを使うか指定\n'
+                     + '// 使いたい画像の名前を指定\n'
                      + "bear.image = core.assets['chara1.png'];\n"
                      + '\n'
-                     + '// キャラクターの初期位置\n'
+                     + '// キャラクターのさいしょの位置を指定\n'
                      + 'bear.x = 0;\n'
                      + 'bear.y = 0;\n'
                      + '\n'
-                     + '// キャラクターのイベント\n'
+                     + '// キャラクターを動かす命令\n'
                      + "bear.on('enterframe', function() {\n"
                      + '\n'
-                     + '    // 歩く処理\n'
-                     + '    bear.x += 10;\n'
-                     + '    if (bear.x > core.width) bear.x = 0;\n'
+                     + '    // キャラクターが歩く命令\n'
+                     + '    bear.x = bear.x + 10;\n'
+                     + '    if (bear.x > core.width) {\n'
+                     + '        bear.x = 0;\n'
+                     + '    }\n'
                      + '});\n'
                      + '\n'
-                     + '// 最初に指定した画像から0→1→0→2という順番で表示\n'
+                     + '// キャラクターの動き方を指定\n'
                      + 'bear.frame = [0, 1, 0, 2];\n'
                      + '\n'
-                     + '// キャラクターを画面に設定\n'
+                     + '// キャラクターを画面についか\n'
                      + 'scene.addChild(bear);';
         }
 
