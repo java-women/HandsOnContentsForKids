@@ -16,7 +16,7 @@ body {
 }
 
 #map-dropdown-btn {
-    width: 250px;
+    width: 260px;
 }
 
 #map-selected {
@@ -31,4 +31,9 @@ ul#map-dropdown-menu > li {
 
 ul#map-dropdown-menu > li:nth-child(3n+2) {
     margin: 0 1%;
+}
+
+img {
+    width: 40px;
+    height: 40px;
 }
