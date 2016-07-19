@@ -177,6 +177,6 @@ function editData(){
         locationY = getIntValue("location-y", 1, 20);
         core.replaceScene(createStartScene());
     } catch(e) {
-        alert("うまく動かなかった。\r\nやり直してね。");
+        alert("うまく動かなかった。\r\n半角数字の1から20の数字を入力してね。");
     }
 }

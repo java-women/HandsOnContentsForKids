@@ -101,9 +101,9 @@ function checkPositiveNumber(id) {
  */
 function toggle_button() {
     if (document.getElementById('editor').getAttribute('class') == 'collapse') {
-        document.getElementById('toggle-btn').innerHTML  = '<span class="glyphicon glyphicon-minus"></span> エディタをとじる';
+        document.getElementById('toggle-btn').innerHTML  = '<span class="glyphicon glyphicon-minus" data-toggle="collapse" data-target="#editor"></span> エディタをとじる';
     } else {
-        document.getElementById('toggle-btn').innerHTML  = '<span class="glyphicon glyphicon-plus"></span> エディタをひらく';
+        document.getElementById('toggle-btn').innerHTML  = '<span class="glyphicon glyphicon-plus" data-toggle="collapse" data-target="#editor"></span> エディタをひらく';
     }
 }
 

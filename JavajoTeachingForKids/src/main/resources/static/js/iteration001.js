@@ -111,7 +111,7 @@ function editData() {
         core.replaceScene(createStartScene());
 
     } catch(e) {
-        alert("うまく動かなかった。\r\nやり直してね。");
+        alert("うまく動かなかった。\r\n半角数字の1から1000の数字を入力してね。");
     }
 }
 
