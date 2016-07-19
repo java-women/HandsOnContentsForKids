@@ -8,7 +8,7 @@ var gameStatus=0; //1:GOAL 2:LOST
 var inputEnemySpeed=10;
 var inputMotionHeight=10;
 var inputEnemyHeight=100;
-var inputEnemyWidth=100;
+var inputEnemyWidth=400;
 //敵キャラクター1の動き傾斜
 var RATE=2;
 

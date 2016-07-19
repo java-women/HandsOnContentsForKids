@@ -1,14 +1,14 @@
 <!DOCTYPE html>
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8" />
     <title>ぶたさんをじゆうにうごかそう！</title>
     <link th:substituteby="common/head :: common_head"/>
+    <link th:substituteby="common/head-chat :: common_head_chat"/>
     <script type="text/javascript" src="enchant.js"></script>
     <script type="text/javascript" src="plugins/ui.enchant.js"></script>
     <script type="text/javascript" src="js/stage-common.js"></script>
     <script type="text/javascript" src="js/condition002.js"></script>
-    <link rel="stylesheet" href="css/condition002.css" />
 </head>
 <body>
 <div th:include="common/header :: common_header"></div>
@@ -17,26 +17,46 @@
     <div id="enchant-stage"></div>
     <div id="editor">
         <div class="row">
-            <div class="col-lg-12">
+            <div class="col-sm-12">
                 <div class="panel panel-success">
                     <div class="panel-heading">
                         <h2 class="panel-title">ぶたさんをじゆうにうごかそう！</h2>
                     </div>
-                    <div class="panel-body panel-padding">
-                        <pre>
-    ぶたさんのたて位置 = <input type="text" value="100" id="enemy-height" />;
-    ぶたさんのよこ位置 = <input type="text" value="100" id="enemy-width" />;
-    ぶたさんのスピード = <input type="text" value="10" id="enemy-speed" />;
-
-    if (ゲームの時間 / ぶたさんの動く幅 <input type="text" value="4" id="motion-height" />)
-        ＜ (ぶたさんの動く幅/2){
-            ぶたさんは上へ
-    } else {
-            ぶたさんは下へ
-    }
-                        </pre>
-                        <div class="input-group">
-                            <button class="btn btn-lg btn-primary" onclick="editData()">Edit</button>
+                    <div class="panel-body">
+                        <p>ぶたさんはここにいるよ</p>
+                        <div class="col-sm-6">
+                            <div class="input-group input-group-lg">
+                                <span class="input-group-addon">よこ</span>
+                                <input type="text" class="form-control" value="400" id="enemy-width"/>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="input-group input-group-lg">
+                                <span class="input-group-addon">たて</span>
+                                <input type="text" class="form-control" value="100" id="enemy-height"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel-body">
+                        <p>ぶたさんの速さを決めるよ</p>
+                        <div class="col-sm-6">
+                            <div class="input-group input-group-lg">
+                                <span class="input-group-addon">スピード</span>
+                                <input type="text" class="form-control" value="10" id="enemy-speed"/>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="input-group input-group-lg">
+                                <span class="input-group-addon">動く幅</span>
+                                <input type="text" class="form-control" value="10" id="motion-height"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel-body">
+                        <div class="col-sm-12">
+                            <div class="input-group">
+                                <button class="btn btn-lg btn-primary" onclick="editData()"><span class="glyphicon glyphicon-edit"></span>  へんこう</button>
+                            </div>
                         </div>
                     </div>
                 </div>
