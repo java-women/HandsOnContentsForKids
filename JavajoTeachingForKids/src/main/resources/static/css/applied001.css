@@ -25,3 +25,7 @@
     margin: -10px auto;
     margin-left: 60px;
 }
+
+#color-button {
+    border-color: silver;
+}
