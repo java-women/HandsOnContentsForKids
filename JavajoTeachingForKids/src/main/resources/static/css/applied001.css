@@ -20,10 +20,9 @@
 }
 
 #select-move, #select-bear {
-    width: 300px;
+    width: 200px;
     height: 30px;
-    margin: -10px auto;
-    margin-left: 60px;
+    display:inline;
 }
 
 #color-button {
