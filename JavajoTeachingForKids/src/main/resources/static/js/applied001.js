@@ -1,7 +1,6 @@
 enchant();
 
 var core;
-const SCALE = 1.9;
 const CHARA_IMG = 'chara1.png';
 const AUTO = 'auto';
 const MANUAL = 'manual';

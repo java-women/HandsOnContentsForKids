@@ -8,6 +8,7 @@
     <script type="text/javascript" src="enchant.js"></script>
     <script type="text/javascript" src="plugins/jscolor.min.js"></script>
 
+    <script type="text/javascript" src="js/stage-common.js"></script>
     <script type="text/javascript" src="js/applied001_action.js"></script>
     <script type="text/javascript" src="js/applied001.js"></script>
 
@@ -31,11 +32,11 @@
 ゲーム画面のせってい {
 
     はいけい色 = <button class="btn jscolor {valueElement:'color-picker', value:'FFF'}" id="color-button">クリックして色をえらんでね</button>
-                           <input type="hidden" id="color-picker" />
+                <input type="hidden" id="color-picker" />
 
     くまさんのせってい {
 
-        // くまさんの動きをへんこう
+        くまさんの動き =
         <select class="form-control" id="select-move">
             <option value="notMove">動かない</option>
             <option value="auto">じどうで動かす</option>
