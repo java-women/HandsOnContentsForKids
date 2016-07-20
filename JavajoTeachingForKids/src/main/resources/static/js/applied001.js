@@ -2,6 +2,7 @@ enchant();
 
 var core;
 const CHARA_IMG = 'chara1.png';
+const NOT_MOVE = 'notMove';
 const AUTO = 'auto';
 const MANUAL = 'manual';
 const BEAR = 'bear';
@@ -24,7 +25,7 @@ window.onload = function() {
 
     // ゲーム本体の描画
     core.onload = function() {
-        core.replaceScene(createGameScene());
+        core.replaceScene(createGameScene(NOT_MOVE, BEAR));
     };
 
     core.start();
@@ -45,6 +46,9 @@ var createGameScene = function(selectMove, selectBear) {
 
         // 画面からのキャラクターの動き変更
         switch(selectMove) {
+            case NOT_MOVE
+            :
+                break;
             case AUTO:
                 bearMove.auto(this);
                 break;
