@@ -103,6 +103,13 @@ function createGameScene(){
     bear.frame = 0;
     scene.addChild(bear);
 
+    // 当たり判定用のSprite
+    var hitBear = new Sprite(10, 26);
+    hitBear.x = 12;
+    hitBear.y = 105;
+    scene.addChild(hitBear);
+
+
     bear.addEventListener("enterframe", function(){
         //くまの画像変更
         this.frame = this.age % 2 + 6;
@@ -134,6 +141,30 @@ function createGameScene(){
         }
     });
 
+    hitBear.addEventListener("enterframe", function(){
+
+        //操作キャラクターの進むスピードを指定
+        if(gameStatus==0){
+            this.x+=4;
+        }
+
+        //↑キー押下で上移動
+        if(core.input.up){
+            this.y -= 32;
+            if(this.y<20){
+                this.y=20;
+            }
+        }
+        //↓キー押下で下移動
+        if(core.input.down){
+            this.y += 32;
+            if(this.y>220){
+                this.y=220;
+            }
+        }
+
+    });
+
     //敵キャラクター1を設定
     var pig1 = new Sprite(32, 32);
     pig1.image = core.assets["chara2.png"];
@@ -141,6 +172,13 @@ function createGameScene(){
     pig1.y = 100;
     pig1.frame = 0;
     scene.addChild(pig1);
+
+    // 当たり判定用のSprite
+    var hitPig1 = new Sprite(26, 23);
+    hitPig1.x = 100;
+    hitPig1.y = 110;
+    scene.addChild(hitPig1);
+
     if(gameStatus==0){
         pig1.addEventListener("enterframe", function(){
             //フレーム
@@ -151,13 +189,25 @@ function createGameScene(){
             } else {
                 this.y -= inputEnemySpeed;
             }
+        });
+
+        hitPig1.addEventListener("enterframe", function(){
+            //フレーム
+            this.frame = this.age % 2 + 6;
+            //動きを設定
+            if(this.age%24<12 ){
+                this.y += inputEnemySpeed;
+            } else {
+                this.y -= inputEnemySpeed;
+            }
             //当たり判定
             for (var i=1;i<2;i++){
-                if(this.intersect(bear)){
+                if(this.intersect(hitBear)){
                     gameStatus=2
                 }
             }
         });
+
     }
 
     //敵キャラクター2を設定
@@ -167,6 +217,13 @@ function createGameScene(){
     pig2.y = 40;
     pig2.frame = 0;
     scene.addChild(pig2);
+
+    // 当たり判定用のSprite
+    var hitPig2 = new Sprite(26, 23);
+    hitPig2.x = 230;
+    hitPig2.y = 50;
+    scene.addChild(hitPig2);
+
     if(gameStatus==0){
         pig2.addEventListener("enterframe", function(){
             //フレーム
@@ -177,9 +234,20 @@ function createGameScene(){
             } else {
                 this.y -= inputEnemySpeed;
             }
+        });
+
+        hitPig2.addEventListener("enterframe", function(){
+            //フレーム
+            this.frame = this.age % 2 + 6;
+            //動きを設定
+            if(this.age%36<18 ){
+                this.y += inputEnemySpeed;
+            } else {
+                this.y -= inputEnemySpeed;
+            }
             //当たり判定
             for (var i=1;i<2;i++){
-                if(this.intersect(bear)){
+                if(this.intersect(hitBear)){
                     gameStatus=2
                 }
             }
@@ -193,6 +261,13 @@ function createGameScene(){
     pig3.y = 80;
     pig3.frame = 0;
     scene.addChild(pig3);
+
+    // 当たり判定用のSprite
+    var hitPig3 = new Sprite(26, 23);
+    hitPig3.x = 340;
+    hitPig3.y = 90;
+    scene.addChild(hitPig3);
+
     if(gameStatus==0){
         pig3.addEventListener("enterframe", function(){
             //フレーム
@@ -203,9 +278,21 @@ function createGameScene(){
             } else {
                 this.y -= inputEnemySpeed;
             }
+
+        });
+
+        hitPig3.addEventListener("enterframe", function(){
+            //フレーム
+            this.frame = this.age % 2 + 6;
+            //動きを設定
+            if(this.age%24<12 ){
+                this.y += inputEnemySpeed;
+            } else {
+                this.y -= inputEnemySpeed;
+            }
             //当たり判定
             for (var i=1;i<2;i++){
-                if(this.intersect(bear)){
+                if(this.intersect(hitBear)){
                     gameStatus=2
                 }
             }
@@ -221,10 +308,14 @@ function createGameScene(){
             } else if(bear.x>SCROLL_START){
                 //スクロール
                 bear.x-=4;
+                hitBear.x-=4;
                 map.x-=3;
                 pig1.x-=3;
+                hitPig1.x-=3;
                 pig2.x-=3;
+                hitPig2.x-=3;
                 pig3.x-=3;
+                hitPig3.x-=3;
             }
         }
     });
