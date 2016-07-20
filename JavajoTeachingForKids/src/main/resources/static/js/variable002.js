@@ -31,6 +31,41 @@ function editData(){
     }
 }
 
+//タイトルシーンカスタマイズ
+function createStartScene(){
+
+    var scene = new Scene();
+    scene.backgroundColor = '#3cb371';
+    var startImage = new Sprite(236, 48);
+    startImage.image = core.assets['start.png'];
+    startImage.x = 42;
+    startImage.y = 136;
+    scene.addChild(startImage);
+
+    var subTitle = new Label('【あそびかた】');
+    subTitle.textAlign = 'center';
+    subTitle.y = 190;
+    subTitle.font = '14px sans-serif';
+    scene.addChild(subTitle);
+
+    var line1 = new Label('↑↓をつかってくまさんをうごかして');
+    line1.textAlign = 'center';
+    line1.y = 210;
+    line1.font = '14px sans-serif';
+    scene.addChild(line1);
+
+    var line1 = new Label('ぶたにあたらないようにゴールにいこう！');
+    line1.textAlign = 'center';
+    line1.y = 230;
+    line1.font = '14px sans-serif';
+    scene.addChild(line1);
+
+    startImage.addEventListener(Event.TOUCH_START, function(e) {
+        core.replaceScene(createGameScene());
+    });
+
+    return scene;
+}
 function createGameScene(){
     //初期化処理
     gameStatus=0;
