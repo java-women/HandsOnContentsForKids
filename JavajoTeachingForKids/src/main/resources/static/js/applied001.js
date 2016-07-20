@@ -34,20 +34,19 @@ window.onload = function() {
 /**
  * ゲーム画面
  */
-var createGameScene = function(selectMove, selectBear) {
+var createGameScene = function(selectMove, selectBear, xCoordinate, yCoordinate) {
     var scene = new Scene();
     var bear = new Sprite(32, 32);
     bear.image = core.assets[CHARA_IMG];
-    bear.x = 0;
-    bear.y = 0;
+    bear.x = xCoordinate * 14;
+    bear.y = yCoordinate * 14;
 
     // キャラクターのイベント
     bear.on('enterframe', function() {
 
         // 画面からのキャラクターの動き変更
         switch(selectMove) {
-            case NOT_MOVE
-            :
+            case NOT_MOVE:
                 break;
             case AUTO:
                 bearMove.auto(this);

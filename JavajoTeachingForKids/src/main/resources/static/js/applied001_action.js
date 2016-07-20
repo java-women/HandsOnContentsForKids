@@ -6,11 +6,21 @@ $(function() {
         $('#enchant-stage > div').css('background-color', "#" + color);
     });
 
-    // セレクトボックスが変更された時
-    $('#select-move, #select-bear').change(function() {
-        var selectMove = $('#select-move').val();
-        var selectBear = $('#select-bear').val();
+    // 値が変更された時
+    $('#select-move, #select-bear, #x-coordinate, #y-coordinate').change(function() {
+        changeParam();
+    });
 
-        core.replaceScene(createGameScene(selectMove, selectBear));
+    $('#x-coordinate, #y-coordinate').keyup(function() {
+        changeParam();
     });
 });
+
+function changeParam() {
+    var selectMove = $('#select-move').val();
+    var selectBear = $('#select-bear').val();
+    var xCoordinate = $('#x-coordinate').val();
+    var yCoordinate = $('#y-coordinate').val();
+
+    core.replaceScene(createGameScene(selectMove, selectBear, xCoordinate, yCoordinate));
+}

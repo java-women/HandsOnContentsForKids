@@ -28,3 +28,9 @@
 #color-button {
     border-color: silver;
 }
+
+.coordinate-form {
+    width: 100px;
+    height: 30px;
+    display:inline;
+}
