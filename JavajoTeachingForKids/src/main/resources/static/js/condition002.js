@@ -143,7 +143,7 @@ function createGameScene(){
                 //スクロール
                 bear.x-=4;
                 map.x-=3;
-                pig1.x-=inputEnemySpeed;
+                pig1.x-=3;
             }
         }
     });
