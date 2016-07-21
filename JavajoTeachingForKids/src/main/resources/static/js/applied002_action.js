@@ -28,29 +28,81 @@ $(function(){
 
     /* 保存処理 */
     $("#save").click(function() {
+        var name = $('input#name').val();
+        if (name === null || name === "") {
+            alert("なまえを入れてね。");
+            return;
+        } else if (name.length > 100) {
+            alert("なまえが長すぎるよ。")
+            return;
+        }
+
         $.ajax({
-            type: 'POST',
-            url: "applied002/save",
+            type: 'GET',
+            url: "applied002/checkDuplicate",
             data: {
-                "mapData": JSON.stringify(mapData),
-                "collisionData": JSON.stringify(collisionData)
+                "mapName": name
             },
             success:function(data){
-                alert("保存しました！");
+                $.ajax({
+                    type: 'POST',
+                    url: "applied002/save",
+                    data: {
+                        "mapData": JSON.stringify(mapData),
+                        "collisionData": JSON.stringify(collisionData),
+                        "mapName": name
+                    },
+                    success:function(data){
+                        alert("保存しました！");
 
-                // マップをPNGでダウンロード
-                var canvas = $("canvas")[0];
-                var base64 = canvas.toDataURL();
-                var a = document.createElement('a');
-                a.download = "map.png";
-                a.href = base64;
-                var evt = document.createEvent('MouseEvent');
-                evt.initEvent("click", true, false);
-                a.dispatchEvent( evt );
+                        // マップをPNGでダウンロード
+                        var canvas = $("canvas")[0];
+                        var base64 = canvas.toDataURL();
+                        var a = document.createElement('a');
+                        a.download = name + ".png";
+                        a.href = base64;
+                        var evt = document.createEvent('MouseEvent');
+                        evt.initEvent("click", true, false);
+                        a.dispatchEvent( evt );
+                    },
+                    error:function(data,dataType){
+                        alert("保存に失敗しました。");
+                    }
+                });
             },
             error:function(data,dataType){
-                alert("保存に失敗しました。");
+                if (confirm("同じ名前があります。上書きほぞんしますか？")) {
+                    $.ajax({
+                        type: 'PUT',
+                        url: "applied002/save",
+                        data: {
+                            "id": JSON.parse(data.responseText).id,
+                            "mapData": JSON.stringify(mapData),
+                            "collisionData": JSON.stringify(collisionData),
+                            "mapName": name
+                        },
+                        success:function(data){
+                            alert("保存しました！");
+                            downloadImage(name);
+                        },
+                        error:function(data,dataType){
+                            alert("保存に失敗しました。");
+                        }
+                    });
+                }
             }
         });
     });
+
+    // マップをPNGでダウンロード
+    function downloadImage(name) {
+        var canvas = $("canvas")[0];
+        var base64 = canvas.toDataURL();
+        var a = document.createElement('a');
+        a.download = name + ".png";
+        a.href = base64;
+        var evt = document.createEvent('MouseEvent');
+        evt.initEvent("click", true, false);
+        a.dispatchEvent( evt );
+    }
 });

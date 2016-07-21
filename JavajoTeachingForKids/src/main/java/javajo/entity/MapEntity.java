@@ -18,15 +18,19 @@ public class MapEntity {
     @Id
     @GeneratedValue
     @Column(name = "id")
-    private Long mId;
+    private Long id;
 
     /** Mapデータ. */
     @Column(name = "map_data", length = 2000)
-    private String mMapData;
+    private String mapData;
 
-    /** 衝突データ */
+    /** 衝突データ. */
     @Column(name = "collision_data", length = 2000)
-    private String mCollisionData;
+    private String collisionData;
+
+    /** 名前. */
+    @Column(name = "map_name", unique = true)
+    private String mapName;
 
     /**
      * コンストラクタ.
@@ -35,12 +39,30 @@ public class MapEntity {
     }
 
     /**
+     * Gets id.
+     *
+     * @return the id
+     */
+    public Long getId() {
+        return id;
+    }
+
+    /**
+     * Sets id.
+     *
+     * @param id the id
+     */
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    /**
      * Gets map data.
      *
      * @return the map data
      */
     public String getMapData() {
-        return mMapData;
+        return mapData;
     }
 
     /**
@@ -49,7 +71,7 @@ public class MapEntity {
      * @param mapData the map data
      */
     public void setMapData(final String mapData) {
-        this.mMapData = mapData;
+        this.mapData = mapData;
     }
 
     /**
@@ -58,7 +80,7 @@ public class MapEntity {
      * @return the collision data
      */
     public String getCollisionData() {
-        return mCollisionData;
+        return collisionData;
     }
 
     /**
@@ -66,17 +88,36 @@ public class MapEntity {
      *
      * @param collisionData the collision data
      */
-    public void setCollisionData(String collisionData) {
-        mCollisionData = collisionData;
+    public void setCollisionData(final String collisionData) {
+        this.collisionData = collisionData;
+    }
+
+    /**
+     * Gets map name.
+     *
+     * @return the map name
+     */
+    public String getMapName() {
+        return mapName;
+    }
+
+    /**
+     * Sets map name.
+     *
+     * @param mapName the map name
+     */
+    public void setMapName(final String mapName) {
+        this.mapName = mapName;
     }
 
     @Override
     public String toString() {
-        return "MapEntity{" +
-                "mId=" + mId +
-                ", mMapData='" + mMapData + '\'' +
-                ", mCollisionData='" + mCollisionData + '\'' +
-                '}';
+        return "MapEntity{"
+                + "id=" + id
+                + ", mapData='" + mapData + '\''
+                + ", collisionData='" + collisionData + '\''
+                + ", mapName='" + mapName + '\''
+                + '}';
     }
 
 }
