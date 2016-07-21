@@ -19,7 +19,7 @@
     text-align : center;
 }
 
-#select-move, #select-bear {
+.select {
     width: 200px;
     height: 30px;
     display:inline;

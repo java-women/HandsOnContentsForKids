@@ -7,7 +7,7 @@ $(function() {
     });
 
     // 値が変更された時
-    $('#select-move, #select-bear, #x-coordinate, #y-coordinate').change(function() {
+    $('#select-move, #select-bear, #x-coordinate, #y-coordinate, #spaceKey').change(function() {
         changeParam();
     });
 
@@ -21,6 +21,7 @@ function changeParam() {
     var selectBear = $('#select-bear').val();
     var xCoordinate = $('#x-coordinate').val();
     var yCoordinate = $('#y-coordinate').val();
+    var spaceKeyAction = $('#spaceKey').val();
 
-    core.replaceScene(createGameScene(selectMove, selectBear, xCoordinate, yCoordinate));
+    core.replaceScene(createGameScene(selectMove, selectBear, xCoordinate, yCoordinate, spaceKeyAction));
 }

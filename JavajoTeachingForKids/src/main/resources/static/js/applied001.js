@@ -8,6 +8,10 @@ const MANUAL = 'manual';
 const BEAR = 'bear';
 const WHITE_BEAR = 'whiteBear';
 const GIRL_BEAR = 'girlBear';
+const DEFAULT_COORDINATE = 0;
+const NO_ACTION = 'noAction';
+const JUMP = 'jump';
+
 
 /**
  * enchant.jsの描画
@@ -15,26 +19,40 @@ const GIRL_BEAR = 'girlBear';
 window.onload = function() {
 
     // 初期設定
-    core = new Core(320, 320);
-    core.scale = SCALE;
-    core.preload(CHARA_IMG);
-    core.fps = 8;
-
-    const defaultColor = document.getElementById('color-picker').value;
-    core.rootScene.backgroundColor = "#" + defaultColor;
+    init.core();
 
     // ゲーム本体の描画
     core.onload = function() {
-        core.replaceScene(createGameScene(NOT_MOVE, BEAR));
+        init.scene();
     };
 
     core.start();
 }
 
 /**
+ * 初期設定
+ */
+var init = {
+
+    core: function() {
+        core = new Core(320, 320);
+        core.scale = SCALE;
+        core.preload(CHARA_IMG);
+        core.fps = 8;
+
+        const defaultColor = document.getElementById('color-picker').value;
+        core.rootScene.backgroundColor = "#" + defaultColor;
+    },
+
+    scene: function() {
+        core.replaceScene(createGameScene(NOT_MOVE, BEAR, DEFAULT_COORDINATE, DEFAULT_COORDINATE, NO_ACTION));
+    }
+};
+
+/**
  * ゲーム画面
  */
-var createGameScene = function(selectMove, selectBear, xCoordinate, yCoordinate) {
+var createGameScene = function(selectMove, selectBear, xCoordinate, yCoordinate, spaceKeyAction) {
     var scene = new Scene();
     var bear = new Sprite(32, 32);
     bear.image = core.assets[CHARA_IMG];
@@ -59,8 +77,6 @@ var createGameScene = function(selectMove, selectBear, xCoordinate, yCoordinate)
         }
     });
 
-    scene.addChild(bear);
-
     // 画面からのキャラクター変更
     switch(selectBear) {
         case BEAR:
@@ -75,6 +91,25 @@ var createGameScene = function(selectMove, selectBear, xCoordinate, yCoordinate)
         default:
             break;
     }
+
+    scene.addChild(bear);
+
+    // スペースボタン押下時のイベント
+    core.keybind(' '.charCodeAt(0), 'space');
+    core.on('spacebuttondown', function() {
+
+        switch(spaceKeyAction) {
+            case NO_ACTION:
+                break;
+            case JUMP:
+                bear.tl
+                    .moveBy(0, -30, 2.5, enchant.Easing.CUBIC_EASEOUT)
+                    .moveBy(0, 30, 2.5, enchant.Easing.CUBIC_EASEIN);
+                break;
+            default:
+                break;
+        }
+    });
 
     return scene;
 }
