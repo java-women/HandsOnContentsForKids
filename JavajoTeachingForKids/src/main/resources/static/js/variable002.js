@@ -179,26 +179,44 @@ function createGameScene(){
     hitPig1.y = 110;
     scene.addChild(hitPig1);
 
+    var pig1_turn_flag = 1;
+
     if(gameStatus==0){
         pig1.addEventListener("enterframe", function(){
             //フレーム
             this.frame = this.age % 2 + 6;
             //動きを設定
-            if(this.age%24<12 ){
+            if(pig1_turn_flag == 1){
                 this.y += inputEnemySpeed;
-            } else {
+                if(this.y > 220){
+                   pig1_turn_flag = 0;
+                   this.y = 220;
+                }
+            }else {
                 this.y -= inputEnemySpeed;
+                if(this.y < 10){
+                   pig1_turn_flag = 1;
+                   this.y = 10;
+                }
             }
         });
 
+        var hitPig1_turn_flag = 1;
+
         hitPig1.addEventListener("enterframe", function(){
-            //フレーム
-            this.frame = this.age % 2 + 6;
             //動きを設定
-            if(this.age%24<12 ){
+            if(hitPig1_turn_flag == 1){
                 this.y += inputEnemySpeed;
-            } else {
+                if(this.y > 230){
+                   hitPig1_turn_flag = 0;
+                   this.y = 230;
+                }
+            }else {
                 this.y -= inputEnemySpeed;
+                if(this.y < 20){
+                   hitPig1_turn_flag = 1;
+                   this.y = 20;
+                }
             }
             //当たり判定
             for (var i=1;i<2;i++){
@@ -224,27 +242,47 @@ function createGameScene(){
     hitPig2.y = 50;
     scene.addChild(hitPig2);
 
+    var pig2_turn_flag = 1;
+
     if(gameStatus==0){
         pig2.addEventListener("enterframe", function(){
             //フレーム
             this.frame = this.age % 2 + 6;
             //動きを設定
-            if(this.age%36<18 ){
+            if(pig2_turn_flag == 1){
                 this.y += inputEnemySpeed;
-            } else {
+                if(this.y > 220){
+                   pig2_turn_flag = 0;
+                   this.y = 220;
+                }
+            }else {
                 this.y -= inputEnemySpeed;
+                if(this.y < 10){
+                   pig2_turn_flag = 1;
+                   this.y = 10;
+                }
             }
+
         });
 
+        var hitPig2_turn_flag = 1;
+
         hitPig2.addEventListener("enterframe", function(){
-            //フレーム
-            this.frame = this.age % 2 + 6;
             //動きを設定
-            if(this.age%36<18 ){
+            if(hitPig2_turn_flag == 1){
                 this.y += inputEnemySpeed;
-            } else {
+                if(this.y > 230){
+                   hitPig2_turn_flag = 0;
+                   this.y = 230;
+                }
+            }else {
                 this.y -= inputEnemySpeed;
+                if(this.y < 20){
+                   hitPig2_turn_flag = 1;
+                   this.y = 20;
+                }
             }
+
             //当たり判定
             for (var i=1;i<2;i++){
                 if(this.intersect(hitBear)){
@@ -268,28 +306,45 @@ function createGameScene(){
     hitPig3.y = 90;
     scene.addChild(hitPig3);
 
+    var pig3_turn_flag = 1;
+
     if(gameStatus==0){
         pig3.addEventListener("enterframe", function(){
             //フレーム
             this.frame = this.age % 2 + 6;
             //動きを設定
-            if(this.age%24<12 ){
+            if(pig3_turn_flag == 1){
                 this.y += inputEnemySpeed;
-            } else {
+                if(this.y > 220){
+                   pig3_turn_flag = 0;
+                }
+            }else {
                 this.y -= inputEnemySpeed;
+                if(this.y < 10){
+                   pig3_turn_flag = 1;
+                }
             }
-
         });
 
+        var hitPig3_turn_flag = 1;
+
         hitPig3.addEventListener("enterframe", function(){
-            //フレーム
-            this.frame = this.age % 2 + 6;
+
             //動きを設定
-            if(this.age%24<12 ){
+            if(hitPig3_turn_flag == 1){
                 this.y += inputEnemySpeed;
-            } else {
+                if(this.y > 230){
+                   hitPig3_turn_flag = 0;
+                   this.y = 230;
+                }
+            }else {
                 this.y -= inputEnemySpeed;
+                if(this.y < 20){
+                   hitPig3_turn_flag = 1;
+                   this.y = 20;
+                }
             }
+
             //当たり判定
             for (var i=1;i<2;i++){
                 if(this.intersect(hitBear)){
