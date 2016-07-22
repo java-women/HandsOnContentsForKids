@@ -80,7 +80,7 @@ function createGameScene() {
  * マップビューをクリア
  */
 function viewClear(){
-    if(window.confirm('本当にいいんですね？')){
+    if(window.confirm('マップが消えてもいい？')){
         initMap();
         core.replaceScene(createGameScene());
     }

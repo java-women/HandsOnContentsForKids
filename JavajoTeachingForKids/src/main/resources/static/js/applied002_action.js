@@ -53,7 +53,7 @@ $(function(){
                         "mapName": name
                     },
                     success:function(data){
-                        alert("保存しました！");
+                        alert("ほぞんしました！");
 
                         // マップをPNGでダウンロード
                         var canvas = $("canvas")[0];
@@ -66,7 +66,7 @@ $(function(){
                         a.dispatchEvent( evt );
                     },
                     error:function(data,dataType){
-                        alert("保存に失敗しました。");
+                        alert("ほぞんに失敗しました。");
                     }
                 });
             },
@@ -82,11 +82,11 @@ $(function(){
                             "mapName": name
                         },
                         success:function(data){
-                            alert("保存しました！");
+                            alert("ほぞんしました！");
                             downloadImage(name);
                         },
                         error:function(data,dataType){
-                            alert("保存に失敗しました。");
+                            alert("ほぞんに失敗しました。");
                         }
                     });
                 }
