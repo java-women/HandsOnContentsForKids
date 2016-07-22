@@ -1,5 +1,10 @@
 enchant();;
 
+var score;
+const MAX_TIME = 15;
+var bear ;
+var scene ;
+
 window.onload = function() {
 
     core = new Core(320, 320);
@@ -12,9 +17,8 @@ window.onload = function() {
 
     // ゲーム本体の描画
     core.onload = function() {
-        document.getElementById('location-x').value=1;
-        document.getElementById('location-y').value=1;
-        core.replaceScene(createGameScene());
+
+        core.replaceScene(createStartScene());
     };
 
     core.start();
@@ -25,13 +29,22 @@ window.onload = function() {
  */
 function createGameScene() {
 
+    score = 0;
+    document.getElementById('location-x').value=1;
+    document.getElementById('location-y').value=1;
+
 
     /* キャラクター初期表示 */
-    var scene = new Scene();
-    var bear = new Sprite(32, 32);
+    scene = new Scene();
+    bear = new Sprite(32, 32);
     bear.image = core.assets['chara1.png'];
 
     scene.addChild(bear);
+
+    // りんご生成
+    for (i = 0; i < 10; i++) {
+        scene.addChild(new Fruits(15,bear));
+    }
 
     // シーンにタッチ移動時イベントを登録
     var isTouch = false;
@@ -66,10 +79,106 @@ function createGameScene() {
         document.getElementById('location-y').value=Math.round((bear.y+16)/16+1);
         //移動
     	bear.moveBy(moveX, moveY);
+
     	}
     });
 
     scene.addChild(drawGrid());
 
+    // スコアとタイマー
+    scene.addChild(new Score());
+    scene.addChild(new Timer());
+
     return scene;
 }
+
+//フルーツクラス
+Fruits = Class.create(Sprite,
+{
+    initialize: function(frame,bear) {
+        Sprite.call(this, 16, 16);
+        this.image = core.assets['icon0.png'];
+
+        // ランダムな場所にフルーツを表示する
+        this.x = Math.random() * 320;
+        this.y = Math.random() * 320;
+        this.frame = frame;
+
+    },
+
+    onenterframe: function(){
+
+        if (this.within(bear)) {
+            // 自分自身(フルーツ)を画面から消す
+            scene.removeChild(this);
+            score++;
+        }
+    }
+});
+
+/**
+ * タイマークラス
+ */
+var Timer = Class.create(Label, {
+
+    // 初期化
+    initialize: function() {
+        Label.call(this);
+
+        core.frame = 0;
+        this.moveTo(5, 5);
+        this.color = 'white';
+        this.font = "15px 'Consolas', 'Monaco', 'ＭＳ ゴシック'";
+        this.text = 'Timer:';
+    },
+
+    // カウントダウン
+    countdown: function() {
+        var time = MAX_TIME - Math.floor(core.frame/core.fps);
+        this.text = 'Timer:' + time;
+
+        // ゲームオーバー
+        if (time == 0) {
+            core.replaceScene(createGameoverScene());
+        }
+    },
+
+    // 更新処理
+    onenterframe: function(){
+        this.countdown();
+    }
+});
+
+
+/**
+ * スコアクラス
+ */
+var Score = Class.create(Label, {
+
+    // 初期化
+    initialize: function() {
+        Label.call(this);
+
+        this.moveTo(5, 300);
+        this.color = 'white';
+        this.font = "15px 'Consolas', 'Monaco', 'ＭＳ ゴシック'";
+        this.text =  score + ' ポイント';
+    },
+
+    // カウント
+    scoreCount: function() {
+        this.text =  score + ' ポイント';
+
+        // ゲームクリア
+        if (score == 10) {
+            core.replaceScene(createGameclearScene());
+        }
+    },
+
+    // 更新処理
+    onenterframe: function(){
+        this.scoreCount();
+    }
+});
+
+
