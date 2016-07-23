@@ -70,62 +70,14 @@ var createGameScene = function(selectMove, selectBear, xCoordinate, yCoordinate,
     bear.x = xCoordinate * 14;
     bear.y = yCoordinate * 14;
 
+    // Mapの設定
     sceneConf.setMap(scene, iterate);
 
-    // キャラクターのイベント
-    bear.on('enterframe', function() {
+    // くまの設定
+    sceneConf.setCharacter(scene, bear, selectMove, selectBear);
 
-        // 画面からのキャラクターの動き変更
-        switch(selectMove) {
-            case NOT_MOVE:
-                break;
-            case AUTO:
-                bearMove.auto(this);
-                break;
-            case MANUAL:
-                bearMove.manual(this);
-                break;
-            default:
-                break;
-        }
-    });
-
-    // 画面からのキャラクター変更
-    switch(selectBear) {
-        case BEAR:
-            bear.frame = [0, 1, 0, 2];
-            break;
-        case WHITE_BEAR:
-            bear.frame = [5, 6, 5, 7];
-            break;
-        case GIRL_BEAR:
-            bear.frame = [10, 11, 10, 12];
-            break;
-        default:
-            break;
-    }
-
-    scene.addChild(bear);
-
-    // スペースボタン押下時のイベント
-    core.keybind(' '.charCodeAt(0), 'space');
-    core.on('spacebuttondown', function() {
-
-        switch(spaceKeyAction) {
-            case NO_ACTION:
-                break;
-            case JUMP:
-                bear.tl
-                    .moveBy(0, -30, 2.5, enchant.Easing.CUBIC_EASEOUT)
-                    .moveBy(0, 30, 2.5, enchant.Easing.CUBIC_EASEIN);
-                break;
-            case ROTATE:
-                bear.tl.rotateBy(360, 3);
-                break;
-            default:
-                break;
-        }
-    });
+    // スペースキーの設定
+    sceneConf.setSpaceKey(spaceKeyAction, bear);
 
     return scene;
 }
@@ -135,7 +87,7 @@ var createGameScene = function(selectMove, selectBear, xCoordinate, yCoordinate,
  */
 var sceneConf = {
 
-    // マップの表示
+    // マップの設定
     setMap: function(scene, iterate) {
         var map = new Map(16, 16);
         map.image = core.assets[MAP_IMG];
@@ -153,44 +105,76 @@ var sceneConf = {
         for (var item = 0; item < iterate; item++) {
             // Maximum call stack size exceededになってしまうので300を境に処理を変える
             if (item <= 300) {
-                setRandomMapItem(baseMap);
+                stone.setRandomMapItem(baseMap);
             } else {
-                setSearchMapItem(baseMap, item - 300);
+                stone.setSearchMapItem(baseMap, item - 300);
             }
         }
 
         map.loadData(baseMap);
         scene.addChild(map);
+    },
+
+    // キャラクターの設定
+    setCharacter: function(scene, bear, selectMove, selectBear) {
+
+        bear.on('enterframe', function() {
+
+            // 画面からのキャラクターの動き変更
+            switch(selectMove) {
+                case NOT_MOVE:
+                    break;
+                case AUTO:
+                    bearMove.auto(this);
+                    break;
+                case MANUAL:
+                    bearMove.manual(this);
+                    break;
+                default:
+                    break;
+            }
+        });
+
+        // 画面からのキャラクター変更
+        switch(selectBear) {
+            case BEAR:
+                bear.frame = [0, 1, 0, 2];
+                break;
+            case WHITE_BEAR:
+                bear.frame = [5, 6, 5, 7];
+                break;
+            case GIRL_BEAR:
+                bear.frame = [10, 11, 10, 12];
+                break;
+            default:
+                break;
+        }
+
+        scene.addChild(bear);
+    },
+
+    // スペースキーの設定
+    setSpaceKey: function(spaceKeyAction, bear) {
+        core.keybind(' '.charCodeAt(0), 'space');
+        core.on('spacebuttondown', function() {
+
+            switch(spaceKeyAction) {
+                case NO_ACTION:
+                    break;
+                case JUMP:
+                    bear.tl
+                        .moveBy(0, -30, 2.5, enchant.Easing.CUBIC_EASEOUT)
+                        .moveBy(0, 30, 2.5, enchant.Easing.CUBIC_EASEIN);
+                    break;
+                case ROTATE:
+                    bear.tl.rotateBy(360, 3);
+                    break;
+                default:
+                    break;
+            }
+        });
     }
 };
-
-/**
- * 指定された場所に値があったら違う場所に置く（300以下）
- */
-function setRandomMapItem(baseMap) {
-    var randomI = Math.floor(Math.random() * 19);
-    var randomN = Math.floor(Math.random() * 19);
-
-    if (baseMap[randomI][randomN] != 93) {
-        baseMap[randomI][randomN] = 93;
-    } else {
-        setRandomMapItem(baseMap);
-    }
-}
-
-/**
- * 93じゃないところを探して置く（300以上）
- */
-function setSearchMapItem(baseMap, val) {
-    for (var i = 0; i < 20; i++) {
-        for (var n = 0; n < 20; n++) {
-            if (baseMap[i][n] != 93 && val != 0) {
-                baseMap[i][n] = 93;
-                val--;
-            }
-        }
-    }
-}
 
 /**
  *  くまの動き
@@ -215,5 +199,35 @@ var bearMove = {
         if (bear.x < 0) bear.x = core.width - bear.width;
         if (bear.y > core.height - bear.height) bear.y = 0;
         if (bear.y < 0) bear.y = core.height - bear.height;
+    }
+};
+
+/**
+ * 石を置く
+ */
+var stone = {
+
+    // 指定された場所に値があったら違う場所に置く（300以下）
+    setRandomMapItem: function(baseMap) {
+        var randomI = Math.floor(Math.random() * 19);
+        var randomN = Math.floor(Math.random() * 19);
+
+        if (baseMap[randomI][randomN] != 93) {
+            baseMap[randomI][randomN] = 93;
+        } else {
+            this.setRandomMapItem(baseMap);
+        }
+    },
+
+    // 93じゃないところを探して置く（300以上）
+    setSearchMapItem: function(baseMap, val) {
+        for (var i = 0; i < 20; i++) {
+            for (var n = 0; n < 20; n++) {
+                if (baseMap[i][n] != 93 && val != 0) {
+                    baseMap[i][n] = 93;
+                    val--;
+                }
+            }
+        }
     }
 };

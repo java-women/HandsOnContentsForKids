@@ -17,7 +17,6 @@ $(function() {
 });
 
 function changeParam() {
-    try {
         var selectMove = $('#select-move').val();
         var selectBear = $('#select-bear').val();
         var xCoordinate = $('#x-coordinate').val();
@@ -25,6 +24,7 @@ function changeParam() {
         var spaceKeyAction = $('#spaceKey').val();
         var iterate = $('#iterate').val();
 
+    try {
         if (xCoordinate != '' && yCoordinate != '' && iterate != '') {
             getIntValue('x-coordinate', 1, 20);
             getIntValue('y-coordinate', 1, 20);
