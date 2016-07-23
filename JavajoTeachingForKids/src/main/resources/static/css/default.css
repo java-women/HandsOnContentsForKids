@@ -23,17 +23,12 @@ button#toggle-btn {
 }
 
 #description {
-    text-align: center;
-    font-size: xx-large;
-    margin: 30px;
+    background: deeppink;
+    color: white;
+    margin-bottom: 10px;
 }
 
-#description > a {
-    color: deeppink;
-    font-weight: bold;
-    text-decoration: blink;
-}
-
-#description > a:hover {
-    color: pink;
+#description:hover {
+    background: #cc006e;
+    color: white;
 }
