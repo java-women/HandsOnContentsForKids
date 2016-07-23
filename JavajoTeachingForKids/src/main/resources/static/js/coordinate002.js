@@ -24,11 +24,41 @@ window.onload = function() {
     core.start();
 };
 
+//タイトルシーンカスタマイズ
+function createStartScene(){
+
+    var scene = new Scene();
+    scene.backgroundColor = '#3cb371';
+    var startImage = new Sprite(236, 48);
+    startImage.image = core.assets['start.png'];
+    startImage.x = 42;
+    startImage.y = 136;
+    scene.addChild(startImage);
+
+    var subTitle = new Label('【あそびかた】');
+    subTitle.textAlign = 'center';
+    subTitle.y = 190;
+    subTitle.font = '14px sans-serif';
+    scene.addChild(subTitle);
+
+    var line1 = new Label('マウスをつかってりんごをあつめよう！');
+    line1.textAlign = 'center';
+    line1.y = 210;
+    line1.font = '14px sans-serif';
+    scene.addChild(line1);
+
+    startImage.addEventListener(Event.TOUCH_START, function(e) {
+        core.replaceScene(createGameScene());
+    });
+
+    return scene;
+}
+
 /**
  * ゲームシーン
  */
 function createGameScene() {
-
+    // 初期値設定
     score = 0;
     document.getElementById('location-x').value=1;
     document.getElementById('location-y').value=1;
@@ -36,6 +66,9 @@ function createGameScene() {
 
     /* キャラクター初期表示 */
     scene = new Scene();
+
+    scene.addChild(drawGrid());
+
     bear = new Sprite(32, 32);
     bear.image = core.assets['chara1.png'];
 
@@ -83,8 +116,6 @@ function createGameScene() {
     	}
     });
 
-    scene.addChild(drawGrid());
-
     // スコアとタイマー
     scene.addChild(new Score());
     scene.addChild(new Timer());
@@ -100,8 +131,8 @@ Fruits = Class.create(Sprite,
         this.image = core.assets['icon0.png'];
 
         // ランダムな場所にフルーツを表示する
-        this.x = Math.random() * 320;
-        this.y = Math.random() * 320;
+        this.x = Math.round(Math.random() * 19) * 16;
+        this.y = Math.round(Math.random() * 19) * 16;
         this.frame = frame;
 
     },
