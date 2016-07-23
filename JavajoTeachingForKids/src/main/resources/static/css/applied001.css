@@ -19,9 +19,26 @@
     text-align : center;
 }
 
-#select-move, #select-bear {
-    width: 300px;
+.select-form {
+    width: 200px;
     height: 30px;
-    margin: -10px auto;
-    margin-left: 60px;
+    display:inline;
+}
+
+#color-button {
+    border-color: silver;
+}
+
+.coordinate-form, #iterate {
+    width: 100px;
+    height: 30px;
+    display:inline;
+}
+
+span.contents-name {
+    color: red;
+}
+
+span.method {
+    color: blue;
 }

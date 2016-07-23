@@ -6,8 +6,10 @@
 
     <link th:substituteby="common/head :: common_head"/>
     <script type="text/javascript" src="enchant.js"></script>
+    <script type="text/javascript" src="plugins/tl.enchant.js"></script>
     <script type="text/javascript" src="plugins/jscolor.min.js"></script>
 
+    <script type="text/javascript" src="js/stage-common.js"></script>
     <script type="text/javascript" src="js/applied001_action.js"></script>
     <script type="text/javascript" src="js/applied001.js"></script>
 
@@ -18,38 +20,59 @@
 
 <div class="container">
     <div id="enchant-stage"></div>
-    <div id="editor">
+    <div th:include="common/toggle-button :: common_toggle_button"></div>
+    <div id="editor" class="collapse">
         <div class="row">
             <div class="col-lg-12">
-                <div class="panel panel-primary">
+                <div class="panel panel-success">
                     <div class="panel-heading">
                         <h2 class="panel-title">くまさんを動かそう！</h2>
                     </div>
                     <div class="panel-body panel-padding">
                             <pre id="editor-space">
-ゲーム画面のせってい {
+<span class="method">ゲーム画面のせってい {</span>
 
-    はいけい色 = <button class="btn jscolor {valueElement:'color-picker', value:'3CB371'}" id="color-button">クリックして色をえらんでね</button>
-                           <input type="hidden" id="color-picker" />
+    <span class="contents-name">★へんすう★</span>
+    はいけい色 = <button class="btn jscolor {valueElement:'color-picker', value:'FFF'}" id="color-button">クリックして色をえらんでね</button>
+                <input type="hidden" id="color-picker" />
 
-    くまさんのせってい {
+    <span class="contents-name">★くりかえし★</span>
+    くりかえしを使って、<input type="text" id="iterate" class="form-control" value="0" />個 ランダムに石を置く （1〜400の数）
 
-        // くまさんの動きをへんこう
-        <select class="form-control" id="select-move">
+
+    <span class="method">くまさんのせってい {</span>
+
+        <span class="contents-name">★ざひょう★</span>
+        くまさんの場所（よこ） = <input type="text" id="x-coordinate" class="form-control coordinate-form" value="1" /> （1〜20の数）
+
+        くまさんの場所（たて） = <input type="text" id="y-coordinate" class="form-control coordinate-form" value="1" /> （1〜20の数）
+
+        <span class="contents-name">★へんすう★</span>
+        くまさんのしゅるい = <select class="form-control select-form" id="select-bear">
+            <option value="bear">茶色のくまさん</option>
+            <option value="whiteBear">白いくまさん</option>
+            <option value="girlBear">リボンのついたくまさん</option>
+        </select>
+
+        <span class="contents-name">★へんすう★</span>
+        くまさんの動き = <select class="form-control select-form" id="select-move">
             <option value="notMove">動かない</option>
-            <option value="auto">じどうで動かす</option>
-            <option value="manual">キーボードで動かす</option>
+            <option value="auto">じどうで動く</option>
+            <option value="manual">キーボードで動く</option>
         </select>
+    <span class="method">}</span>
 
-        // キャラクターをえらぶ
-        <select class="form-control" id="select-bear">
-            <option value="bear">茶色のくま</option>
-            <option value="whiteBear">白いくま</option>
-            <option value="girlBear">リボンのついたくま</option>
+
+    <span class="method">キーボードのせってい {</span>
+
+        <span class="contents-name">★じょうけん★</span>
+        スペースキーをおしたら、<select class="form-control select-form" id="spaceKey">
+            <option value="noAction">何もしない</option>
+            <option value="jump">ジャンプをする</option>
+            <option value="rotate">回転する</option>
         </select>
-    };
-};
-                        </pre>
+    <span class="method">}</span>
+<span class="method">}</span></pre>
                     </div>
                 </div>
             </div>
