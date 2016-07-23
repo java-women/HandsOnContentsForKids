@@ -21,3 +21,14 @@ button#toggle-btn {
     margin-left: 10px;
     margin-bottom: 10px;
 }
+
+#description {
+    background: deeppink;
+    color: white;
+    margin-bottom: 10px;
+}
+
+#description:hover {
+    background: #cc006e;
+    color: white;
+}
