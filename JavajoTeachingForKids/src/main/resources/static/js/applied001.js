@@ -2,7 +2,7 @@ enchant();
 
 var core;
 const CHARA_IMG = 'chara1.png';
-const MAP_IMG = 'map1.png';
+const MAP_IMG = 'map0.png';
 
 const NOT_MOVE = 'notMove';
 const AUTO = 'auto';
@@ -15,6 +15,9 @@ const NO_ACTION = 'noAction';
 const JUMP = 'jump';
 const ROTATE = 'rotate';
 const DEFAULT_ITERATE = 0;
+
+const ITERATE_ITEM = 18;
+const TRANSPARENT_ITEM = 48;
 
 
 /**
@@ -97,7 +100,7 @@ var sceneConf = {
             baseMap[i] = [];
 
             for (var n = 0; n < 20; n++) {
-                baseMap[i][n] = 103;  // 103は透明のmapが置かれる
+                baseMap[i][n] = TRANSPARENT_ITEM;
             }
         }
 
@@ -105,9 +108,9 @@ var sceneConf = {
         for (var item = 0; item < iterate; item++) {
             // Maximum call stack size exceededになってしまうので300を境に処理を変える
             if (item <= 300) {
-                stone.setRandomMapItem(baseMap);
+                mapItem.setRandom(baseMap);
             } else {
-                stone.setSearchMapItem(baseMap, item - 300);
+                mapItem.setSearch(baseMap, item - 300);
             }
         }
 
@@ -197,34 +200,34 @@ var bearMove = {
         // フレームアウトの処理
         if (bear.x > core.width - bear.width) bear.x = 0;
         if (bear.x < 0) bear.x = core.width - bear.width;
-        if (bear.y > core.height - bear.height) bear.y = 0;
-        if (bear.y < 0) bear.y = core.height - bear.height;
+        if (bear.y > core.height - bear.height + 20) bear.y = 0;
+        if (bear.y < -20) bear.y = core.height - bear.height;
     }
 };
 
 /**
- * 石を置く
+ * 花を置く
  */
-var stone = {
+var mapItem = {
 
     // 指定された場所に値があったら違う場所に置く（300以下）
-    setRandomMapItem: function(baseMap) {
+    setRandom: function(baseMap) {
         var randomI = Math.floor(Math.random() * 19);
         var randomN = Math.floor(Math.random() * 19);
 
-        if (baseMap[randomI][randomN] != 93) {
-            baseMap[randomI][randomN] = 93;
+        if (baseMap[randomI][randomN] != ITERATE_ITEM) {
+            baseMap[randomI][randomN] = ITERATE_ITEM;
         } else {
-            this.setRandomMapItem(baseMap);
+            this.setRandom(baseMap);
         }
     },
 
-    // 93じゃないところを探して置く（300以上）
-    setSearchMapItem: function(baseMap, val) {
+    // ITERATE_ITEMじゃないところを探して置く（300以上）
+    setSearch: function(baseMap, val) {
         for (var i = 0; i < 20; i++) {
             for (var n = 0; n < 20; n++) {
-                if (baseMap[i][n] != 93 && val != 0) {
-                    baseMap[i][n] = 93;
+                if (baseMap[i][n] != ITERATE_ITEM && val != 0) {
+                    baseMap[i][n] = ITERATE_ITEM;
                     val--;
                 }
             }
