@@ -8,6 +8,10 @@ $(function() {
 
     // 値が変更された時
     $('#select-move, #select-bear, #x-coordinate, #y-coordinate, #spaceKey, #iterate').change(function() {
+        setInit('x-coordinate', '1');
+        setInit('y-coordinate', '1');
+        setInit('iterate', '0');
+
         changeParam();
     });
 
@@ -16,13 +20,16 @@ $(function() {
     });
 });
 
+/*
+ * createGameSceneにセットする
+ */
 function changeParam() {
-        var selectMove = $('#select-move').val();
-        var selectBear = $('#select-bear').val();
-        var xCoordinate = $('#x-coordinate').val();
-        var yCoordinate = $('#y-coordinate').val();
-        var spaceKeyAction = $('#spaceKey').val();
-        var iterate = $('#iterate').val();
+    var selectMove = $('#select-move').val();
+    var selectBear = $('#select-bear').val();
+    var xCoordinate = $('#x-coordinate').val();
+    var yCoordinate = $('#y-coordinate').val();
+    var spaceKeyAction = $('#spaceKey').val();
+    var iterate = $('#iterate').val();
 
     try {
         if (xCoordinate != '' && yCoordinate != '' && iterate != '') {
@@ -34,5 +41,15 @@ function changeParam() {
 
     } catch(e) {
         alert("うまく動かなかった。\r\n数が大きすぎだよ！");
+    }
+}
+
+/*
+ * 空の時、初期値をセット
+ */
+function setInit(id, initVal) {
+    var idVal = $('#' + id).val();
+    if (!idVal) {
+        $('#' + id).val(initVal);
     }
 }
