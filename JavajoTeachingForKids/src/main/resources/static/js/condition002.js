@@ -31,8 +31,8 @@ function editData(){
     try {
         inputEnemySpeed = getIntValue("enemy-speed",3,100);
         inputMotionHeight = getIntValue("motion-height",0,100);
-        inputEnemyHeight = getIntValue("enemy-height",0,1000);
-        inputEnemyWidth = getIntValue("enemy-width",0,1000);
+        inputEnemyHeight = getIntValue("enemy-height",0,150);
+        inputEnemyWidth = getIntValue("enemy-width",0,400);
         core.replaceScene(createStartScene());
     } catch(e) {
         alert("うまく動かなかった。\r\nやり直してね。");
