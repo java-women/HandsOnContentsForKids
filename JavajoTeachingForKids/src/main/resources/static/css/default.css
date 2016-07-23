@@ -21,3 +21,19 @@ button#toggle-btn {
     margin-left: 10px;
     margin-bottom: 10px;
 }
+
+#description {
+    text-align: center;
+    font-size: xx-large;
+    margin: 30px;
+}
+
+#description > a {
+    color: deeppink;
+    font-weight: bold;
+    text-decoration: blink;
+}
+
+#description > a:hover {
+    color: pink;
+}
