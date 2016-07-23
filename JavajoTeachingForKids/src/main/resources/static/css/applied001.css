@@ -38,3 +38,7 @@
 span.contents-name {
     color: red;
 }
+
+span.method {
+    color: blue;
+}
