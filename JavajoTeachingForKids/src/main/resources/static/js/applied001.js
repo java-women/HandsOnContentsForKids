@@ -10,10 +10,10 @@ const MANUAL = 'manual';
 const BEAR = 'bear';
 const WHITE_BEAR = 'whiteBear';
 const GIRL_BEAR = 'girlBear';
-const DEFAULT_COORDINATE = 0;
+const DEFAULT_COORDINATE = 1;
 const NO_ACTION = 'noAction';
 const JUMP = 'jump';
-const DEFAULT_ITERATE = '0';
+const DEFAULT_ITERATE = 0;
 
 
 /**
@@ -56,6 +56,13 @@ var init = {
  * ゲーム画面
  */
 var createGameScene = function(selectMove, selectBear, xCoordinate, yCoordinate, spaceKeyAction, iterate) {
+    if (xCoordinate > 0) {
+        xCoordinate--;
+    }
+    if (yCoordinate > 0) {
+        yCoordinate--;
+    }
+
     var scene = new Scene();
     var bear = new Sprite(32, 32);
     bear.image = core.assets[CHARA_IMG];
