@@ -6,6 +6,7 @@
 
     <link th:substituteby="common/head :: common_head"/>
     <script type="text/javascript" src="enchant.js"></script>
+    <script type="text/javascript" src="plugins/tl.enchant.js"></script>
     <script type="text/javascript" src="plugins/jscolor.min.js"></script>
 
     <script type="text/javascript" src="js/stage-common.js"></script>
@@ -34,6 +35,9 @@
     <span class="contents-name">★へんすう★</span>
     はいけい色 = <button class="btn jscolor {valueElement:'color-picker', value:'FFF'}" id="color-button">クリックして色をえらんでね</button>
                 <input type="hidden" id="color-picker" />
+
+    <span class="contents-name">★くりかえし★</span>
+    くりかえしを使って、<input type="text" id="iterate" class="form-control" value="0" />個 ランダムに石を置く
 
     くまさんのせってい {
 

@@ -29,7 +29,7 @@
     border-color: silver;
 }
 
-.coordinate-form {
+.coordinate-form, #iterate {
     width: 100px;
     height: 30px;
     display:inline;

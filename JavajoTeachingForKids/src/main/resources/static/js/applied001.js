@@ -2,6 +2,8 @@ enchant();
 
 var core;
 const CHARA_IMG = 'chara1.png';
+const MAP_IMG = 'map1.png';
+
 const NOT_MOVE = 'notMove';
 const AUTO = 'auto';
 const MANUAL = 'manual';
@@ -11,6 +13,7 @@ const GIRL_BEAR = 'girlBear';
 const DEFAULT_COORDINATE = 0;
 const NO_ACTION = 'noAction';
 const JUMP = 'jump';
+const DEFAULT_ITERATE = '0';
 
 
 /**
@@ -37,7 +40,7 @@ var init = {
     core: function() {
         core = new Core(320, 320);
         core.scale = SCALE;
-        core.preload(CHARA_IMG);
+        core.preload(CHARA_IMG, MAP_IMG);
         core.fps = 8;
 
         const defaultColor = document.getElementById('color-picker').value;
@@ -45,19 +48,21 @@ var init = {
     },
 
     scene: function() {
-        core.replaceScene(createGameScene(NOT_MOVE, BEAR, DEFAULT_COORDINATE, DEFAULT_COORDINATE, NO_ACTION));
+        core.replaceScene(createGameScene(NOT_MOVE, BEAR, DEFAULT_COORDINATE, DEFAULT_COORDINATE, NO_ACTION, DEFAULT_ITERATE));
     }
 };
 
 /**
  * ゲーム画面
  */
-var createGameScene = function(selectMove, selectBear, xCoordinate, yCoordinate, spaceKeyAction) {
+var createGameScene = function(selectMove, selectBear, xCoordinate, yCoordinate, spaceKeyAction, iterate) {
     var scene = new Scene();
     var bear = new Sprite(32, 32);
     bear.image = core.assets[CHARA_IMG];
     bear.x = xCoordinate * 14;
     bear.y = yCoordinate * 14;
+
+    sceneConf.setMap(scene, iterate);
 
     // キャラクターのイベント
     bear.on('enterframe', function() {
@@ -112,6 +117,68 @@ var createGameScene = function(selectMove, selectBear, xCoordinate, yCoordinate,
     });
 
     return scene;
+}
+
+/**
+ * sceneの設定
+ */
+var sceneConf = {
+
+    // マップの表示
+    setMap: function(scene, iterate) {
+        var map = new Map(16, 16);
+        map.image = core.assets[MAP_IMG];
+
+        var baseMap = [];
+        for (var i = 0; i < 20; i++) {
+            baseMap[i] = [];
+
+            for (var n = 0; n < 20; n++) {
+                baseMap[i][n] = 103;  // 103は透明のmapが置かれる
+            }
+        }
+
+        // 適当にばらまく
+        for (var item = 0; item < iterate; item++) {
+            // Maximum call stack size exceededになってしまうので300を境に処理を変える
+            if (item <= 300) {
+                setRandomMapItem(baseMap);
+            } else {
+                setSearchMapItem(baseMap, item - 300);
+            }
+        }
+
+        map.loadData(baseMap);
+        scene.addChild(map);
+    }
+};
+
+/**
+ * 指定された場所に値があったら違う場所に置く（300以下）
+ */
+function setRandomMapItem(baseMap) {
+    var randomI = Math.floor(Math.random() * 19);
+    var randomN = Math.floor(Math.random() * 19);
+
+    if (baseMap[randomI][randomN] != 93) {
+        baseMap[randomI][randomN] = 93;
+    } else {
+        setRandomMapItem(baseMap);
+    }
+}
+
+/**
+ * 93じゃないところを探して置く（300以上）
+ */
+function setSearchMapItem(baseMap, val) {
+    for (var i = 0; i < 20; i++) {
+        for (var n = 0; n < 20; n++) {
+            if (baseMap[i][n] != 93 && val != 0) {
+                baseMap[i][n] = 93;
+                val--;
+            }
+        }
+    }
 }
 
 /**
