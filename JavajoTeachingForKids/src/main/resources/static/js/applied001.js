@@ -13,6 +13,7 @@ const GIRL_BEAR = 'girlBear';
 const DEFAULT_COORDINATE = 1;
 const NO_ACTION = 'noAction';
 const JUMP = 'jump';
+const ROTATE = 'rotate';
 const DEFAULT_ITERATE = 0;
 
 
@@ -117,6 +118,9 @@ var createGameScene = function(selectMove, selectBear, xCoordinate, yCoordinate,
                 bear.tl
                     .moveBy(0, -30, 2.5, enchant.Easing.CUBIC_EASEOUT)
                     .moveBy(0, 30, 2.5, enchant.Easing.CUBIC_EASEIN);
+                break;
+            case ROTATE:
+                bear.tl.rotateBy(360, 3);
                 break;
             default:
                 break;
