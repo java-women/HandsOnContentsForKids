@@ -200,8 +200,8 @@ var bearMove = {
         // フレームアウトの処理
         if (bear.x > core.width - bear.width) bear.x = 0;
         if (bear.x < 0) bear.x = core.width - bear.width;
-        if (bear.y > core.height - bear.height) bear.y = 0;
-        if (bear.y < 0) bear.y = core.height - bear.height;
+        if (bear.y > core.height - bear.height + 20) bear.y = 0;
+        if (bear.y < -20) bear.y = core.height - bear.height;
     }
 };
 
