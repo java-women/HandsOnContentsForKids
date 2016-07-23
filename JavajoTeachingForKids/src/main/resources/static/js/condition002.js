@@ -8,7 +8,7 @@ var gameStatus=0; //1:GOAL 2:LOST
 var inputEnemySpeed=10;
 var inputMotionHeight=10;
 var inputEnemyHeight=100;
-var inputEnemyWidth=100;
+var inputEnemyWidth=400;
 //敵キャラクター1の動き傾斜
 var RATE=2;
 
@@ -31,8 +31,8 @@ function editData(){
     try {
         inputEnemySpeed = getIntValue("enemy-speed",3,100);
         inputMotionHeight = getIntValue("motion-height",0,100);
-        inputEnemyHeight = getIntValue("enemy-height",0,1000);
-        inputEnemyWidth = getIntValue("enemy-width",0,1000);
+        inputEnemyHeight = getIntValue("enemy-height",0,150);
+        inputEnemyWidth = getIntValue("enemy-width",0,400);
         core.replaceScene(createStartScene());
     } catch(e) {
         alert("うまく動かなかった。\r\nやり直してね。");
@@ -143,7 +143,7 @@ function createGameScene(){
                 //スクロール
                 bear.x-=4;
                 map.x-=3;
-                pig1.x-=inputEnemySpeed;
+                pig1.x-=3;
             }
         }
     });
