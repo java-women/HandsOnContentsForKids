@@ -151,7 +151,7 @@ src/main/resources/satic/top.html
 
 1．以下のURLにアクセス
 
-    http://localhost:8080/
+    http://localhost:18081/
 
 2．ログインする
 
@@ -169,7 +169,7 @@ src/main/resources/satic/top.html
 
     ※右側にエディタを作成してする予定
     ※以下のURLにアクセスして直接パラメータ改竄したゲームをすることは可能
-      http://localhost:8080/stage001?enemey=10
+      http://localhost:18081/stage001?enemey=10
 
 8．手順4～6の通りモンスターを攻撃
 
