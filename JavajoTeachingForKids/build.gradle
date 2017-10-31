@@ -1,5 +1,5 @@
 group 'javajo'
-version '1.0-0-SNAPSHOT'
+version '1.0'
 
 buildscript {
     repositories {
@@ -12,9 +12,11 @@ buildscript {
 
 apply plugin: 'java'
 apply plugin: 'spring-boot'
+//apply plugin: 'war'
 
 sourceCompatibility = '1.8'
 targetCompatibility = '1.8'
+
 
 repositories {
     mavenCentral()
@@ -29,7 +31,13 @@ dependencies {
     compile 'org.hsqldb:hsqldb'
 }
 
-jar.baseName = 'javajo-teaching-for-kids'
+//jar.baseName = 'javajo-teaching-for-kids'
+jar {
+    baseName = 'javajo'
+    manifest {
+        attributes 'Main-Class': 'javajo'
+    }
+}
 
 bootRun {
     addResources = true
