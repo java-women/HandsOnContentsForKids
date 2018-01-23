@@ -11,7 +11,7 @@
   "devDependencies": {
   	"electron-packager": "^5.1.1",
     "electron-prebuilt": "^0.35.4",
-    "jquery": "^1.11.3",
+    "jquery": "^3.0.0",
     "bootstrap": "^3.3.6"
   },
   "author": "aya",
