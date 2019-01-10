@@ -14,7 +14,7 @@ apply plugin: 'idea'
 apply plugin: 'org.springframework.boot'
 
 jar {
-    baseName = 'javajo-teaching-for-kids'
+    baseName = 'app'
     manifest {
         attributes 'Main-Class': 'javajo'
     }
