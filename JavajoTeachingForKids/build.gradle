@@ -1,5 +1,4 @@
 group 'javajo'
-version '1.0'
 
 buildscript {
     repositories {
@@ -13,15 +12,6 @@ buildscript {
 apply plugin: 'java'
 apply plugin: 'idea'
 apply plugin: 'org.springframework.boot'
-apply plugin: 'war'
-
-//Azure WebApps用
-war {
-    baseName = 'ROOT'
-    manifest {
-        attributes 'Main-Class': 'javajo'
-    }
-}
 
 jar {
     baseName = 'javajo-teaching-for-kids'
@@ -49,16 +39,16 @@ repositories {
 }
 
 dependencies {
-    compile 'org.springframework.boot:spring-boot-starter-web'
-    compile 'org.springframework.boot:spring-boot-starter-thymeleaf'
-    compile 'org.springframework.boot:spring-boot-starter-websocket'
-    compile 'org.springframework.boot:spring-boot-devtools'
-    compile 'org.springframework.boot:spring-boot-starter-data-jpa'
+    compile 'org.springframework.boot:spring-boot-starter-web:1.5.1.RELEASE'
+    compile 'org.springframework.boot:spring-boot-starter-thymeleaf:1.5.1.RELEASE'
+    compile 'org.springframework.boot:spring-boot-starter-websocket:1.5.1.RELEASE'
+    compile 'org.springframework.boot:spring-boot-devtools:1.5.1.RELEASE'
+    compile 'org.springframework.boot:spring-boot-starter-data-jpa:1.5.1.RELEASE'
     compile 'org.hsqldb:hsqldb'
 
-    providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
 }
 
 bootRun {
     addResources = true
 }
+
